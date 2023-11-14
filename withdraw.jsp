@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
    <%@ page import="java.sql.*" %>
+   <%@ page import="util.ConnectionPool" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,17 +10,13 @@
 </head>
 <body>
 <%
-request.setCharacterEncoding("utf-8");
-
 String uid=request.getParameter("id");
-String upw=request.getParameter("pw");
 String sql="DELETE FROM user where id = ?";
 
-Class.forName("com.mysql.jdbc.Driver");
-Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/shopingmall","root","1111");
+Connection conn=ConnectionPool.get();
 PreparedStatement stmt=conn.prepareStatement(sql);
+
 stmt.setString(1,uid);
-stmt.setString(2,upw);
 
 int count=stmt.executeUpdate();
 if(count==1) out.print("회원 탈퇴 완료");

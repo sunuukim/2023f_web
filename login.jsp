@@ -6,12 +6,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Password change</title>
+<title>Insert title here</title>
 </head>
 <body>
 <%
+String uid=request.getParameter("id");
 String upw=request.getParameter("pw");
-String sql="UPDATE user set pw= ?";
+String sql="select * from user pw= ?";
 
 Connection conn=ConnectionPool.get();
 PreparedStatement stmt=conn.prepareStatement(sql);

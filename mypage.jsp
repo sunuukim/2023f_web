@@ -3,6 +3,7 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.Date" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+ <%@ page import="util.ConnectionPool" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,12 +58,11 @@
 <tr>
 	<td>
 		<pre>
-		<%
-		Class.forName("com.mysql.jdbc.Driver");
-		Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/shopingmall","root","1111");
-		Statement stmt=conn.createStatement();
-		
+		<%		
 		String sql="select price,count,explanation,sdate,ddate,delivery from item";
+		
+		Connection conn=ConnectionPool.get();
+		PreparedStatement stmt=conn.prepareStatement(sql);
 		ResultSet rs=stmt.executeQuery(sql);
 		
 		Date now=new Date(); 
