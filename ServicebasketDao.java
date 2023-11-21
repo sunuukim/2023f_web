@@ -7,7 +7,7 @@ import javax.naming.NamingException;
 
 import util.ConnectionPool;
 
-public class AddbasketDao {
+public class ServicebasketDao {
 	private static final String SELECT_PRODUCT_INFO_QUERY="SELECT pname, quantity, price FROM shoppingmall WHERE pid=?";
 	private static final String INSERT_BASKET_ITEM_QUERY="INSERT INTO basket (pname, quantity, price) VALUES (?,?,?)";
 	
