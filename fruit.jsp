@@ -8,13 +8,13 @@
 </head>
 <body>
 <%@ page import ="java.sql.*" %>
+<%@ page import ="util.ConnectionPool" %>
 <%@ include file ="Foodmenu.jsp" %>
 <%
 request.setCharacterEncoding("utf-8");
 
-String sql ="select name, price, link from item where type='과일'";
-Class.forName("com.mysql.jdbc.Driver");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingmall?serverTimezone=UTC","root","1111");
+String sql ="select pid, name, price from item where type='과일'";
+Connection conn = util.ConnectionPool.get();
 Statement stmt = conn.createStatement();
 ResultSet rs = stmt.executeQuery(sql);//rs에 리스트상태로 저장됨
 String str="<table border=0 align=center cellpadding=20 cellspacing=20><tr>";
@@ -22,7 +22,7 @@ int count = 0;
 while(rs.next())//더 이상 next가 없을 때까지
 {
 	if(count!=0 && count%5==0)str += "<tr>";
-	str += "<td width=100><a href='"+ rs.getString("link")+ "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원<br></td>";
+	str += "<td width=100><a href='iteminfo.jsp" + "?pid=" + rs.getString("pid") + "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원<br></td>";
 	count++;
 	if(count!=0 && count%5==0)str += "</tr>";
 }
