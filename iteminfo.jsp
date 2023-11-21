@@ -4,20 +4,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>식품>과일>방울토마토</title>
+<title>식품>과일></title>
 </head>
 <body>
 <%@ page import ="java.sql.*" %>
+<%@ page import ="util.ConnectionPool" %>
 <%@ include file="Foodmenu.jsp" %>
 <form action="cart.jsp">
 <%
 request.setCharacterEncoding("utf-8");
+int pid = Integer.parseInt(request.getParameter("pid"));
+String sql ="select name, price from item where pid=?";
 
-String sql ="select name, price from item where name='방울토마토'";
-Class.forName("com.mysql.jdbc.Driver");
-Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/shoppingmall?serverTimezone=UTC","root","1111");
-Statement stmt = conn.createStatement();
-ResultSet rs = stmt.executeQuery(sql);//rs에 리스트상태로 저장됨
+Connection conn = util.ConnectionPool.get();
+PreparedStatement stmt = conn.prepareStatement(sql);
+stmt.setInt(1, pid);
+ResultSet rs = stmt.executeQuery();//rs에 리스트상태로 저장됨
+
 String str="<table border=0 cellpadding=20 cellspacing=20><tr>";
 String info = "<input type=hidden name=iname value=";
 if(rs.next()){
