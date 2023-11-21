@@ -6,6 +6,7 @@ shoppingmall 데이터베이스
 
 item 테이블
 
-![image](https://github.com/sunuukim/2023f_web/assets/63042552/9a17e568-ace3-4d50-8368-d84be1758558)
+![image](https://github.com/sunuukim/2023f_web/assets/63042552/80794446-82ff-4116-aa50-52ed9636f70e)
+
 
 
