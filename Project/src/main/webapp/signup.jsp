@@ -13,6 +13,7 @@ String uid=request.getParameter("id");
 String upass=request.getParameter("pw");
 String rupass=request.getParameter("rpw");
 String uname=request.getParameter("na");
+String utel=request.getParameter("tel");
 String udad=request.getParameter("dad");
 
 SignDao dao=new SignDao();
