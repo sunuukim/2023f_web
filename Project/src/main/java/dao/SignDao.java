@@ -6,12 +6,12 @@ import javax.naming.NamingException;
 import util.ConnectionPool;
 
 public class SignDao {
-	public boolean insert(String uid, String upass, String uname, String udad) 
+	public boolean insert(String uid, String upass, String uname, String udad, String utel) 
 			throws NamingException, SQLException{
 		Connection conn=null;
 		PreparedStatement stmt=null;
 		try {
-			String sql="insert into user(id,pw,name,daddress) values(?,?,?,?)";
+			String sql="insert into user values(?,?,?,?,?)";
 			conn=ConnectionPool.get();
 			stmt=conn.prepareStatement(sql);
 			
@@ -19,6 +19,7 @@ public class SignDao {
 			stmt.setString(2, upass);
 			stmt.setString(3, uname);
 			stmt.setString(4, udad);
+			stmt.setString(5, utel);
 			
 			int count=stmt.executeUpdate();
 			return (count>0)? true:false;
