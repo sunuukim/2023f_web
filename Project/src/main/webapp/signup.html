@@ -8,7 +8,7 @@
 <body>
 <h1>회원 가입 페이지</h1><hr>
 <form method="post" action="signup.jsp">
-	<table>
+	<table border="5" align="center" >
 		<tr>
 				<td>아이디</td>
 				<td><input type=text size=25 name=id placeholder="Email address" required></td>
@@ -34,11 +34,20 @@
 			<td><textarea cols="50" name=dad></textarea></td>
 		</tr>
 	</table>
-	<br>
-	<input type="submit" value="회원 가입">
-</form>
-<br>
-	<input type="submit" value="로그인">
-</form>
+	<hr>
+	<table align="center">
+		<tr>
+			<td>
+				<input type="submit" style="height: 50px;width:100px" value="회원 가입"></form>
+			</td>
+			<td>
+				<form method="post" action="login.html">
+					<input type="submit" value="로그인창으로">
+				</form>
+			</td>
+		</tr>
+	</table>
+	
+	
 </body>
 </html>
