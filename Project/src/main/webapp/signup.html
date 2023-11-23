@@ -1,34 +1,43 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="core.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SignUp</title>
 </head>
 <body>
 <h1>회원 가입 페이지</h1><hr>
 <form method="post" action="signup.jsp">
 	<table>
 		<tr>
-			<td>아이디</td><td><input type=text size=25 name=id placeholder="Email address" required></td>
+				<td>아이디</td>
+				<td><input type=text size=25 name=id placeholder="Email address" required></td>
 		</tr>
 		<tr>
-			<td>패스워드</td> <td><input type=password size=25 name=pw></td>
+			<td>패스워드</td> 
+			<td><input type=password size=25 name=pw></td>
 		</tr>
 		<tr>
-			<td>패스워드(확인)</td> <td><input type=password size=25 name=rpw></td>
+			<td>패스워드(확인)</td> 
+			<td><input type=password size=25 name=rpw></td>
 		</tr>
 		<tr>
-			<td>이름</td> <td><input type=text size=25 name=na></td>
+			<td>이름</td> 
+			<td><input type=text size=25 name=na></td>
 		</tr>
 		<tr>
-			<td>배송지</td><td><textarea cols="50" name=dad></textarea></td>
+			<td>전화번호</td> 
+			<td><input type=text size=25 name=tel></td>
+		</tr>
+		<tr>
+			<td>배송지</td>
+			<td><textarea cols="50" name=dad></textarea></td>
 		</tr>
 	</table>
 	<br>
 	<input type="submit" value="회원 가입">
 </form>
 <br>
-<form method="post" action="login.html">
 	<input type="submit" value="로그인">
 </form>
 </body>
