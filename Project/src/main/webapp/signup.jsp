@@ -22,9 +22,21 @@ if(dao.exists(uid)){
 	return;
 }
 
-if(!upass.isEmpty()&&!rupass.isEmpty()){
-	if(upass.equals(rupass)){
-		if(dao.insert(uid,upass,uname,udad)){
+if(!upass.isEmpty()||!rupass.isEmpty()||!uname.isEmpty()||!utel.isEmpty()||!udad.isEmpty()){
+	if(uname.isEmpty()){
+		out.print("이름을 입력해 주세요.");
+		out.print("<form method=post action=signup.html>"+"<hr>"+
+		"<input type=submit value=돌아가기>"+"</form>");
+	}else if(utel.isEmpty()){
+		out.print("전화 번호를 입력해 주세요.");
+		out.print("<form method=post action=signup.html>"+"<hr>"+
+		"<input type=submit value=돌아가기>"+"</form>");
+	}else if(udad.isEmpty()){
+		out.print("배송지를 입력해 주세요.");
+		out.print("<form method=post action=signup.html>"+"<hr>"+
+		"<input type=submit value=돌아가기>"+"</form>");
+	}else if(upass.equals(rupass)){
+		if(dao.insert(uid,upass,uname,udad,utel)){
 			out.print("회원 가입이 완료되었습니다.");
 			out.print("<form method=post action=login.html>"+"<hr>"+
 					"<input type=submit value=로그인창으로>"+"</form>");
@@ -39,8 +51,6 @@ if(!upass.isEmpty()&&!rupass.isEmpty()){
 	out.print("<form method=post action=signup.html>"+"<hr>"+
 			"<input type=submit value=돌아가기>"+"</form>");
 }
-
-
 %>
 </body>
 </html>
