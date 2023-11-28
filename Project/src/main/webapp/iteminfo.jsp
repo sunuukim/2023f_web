@@ -9,32 +9,23 @@
 <body>
 <%@ page import ="java.sql.*" %>
 <%@ page import ="util.ConnectionPool" %>
+<%@ page import = "dao.ItemlistDao" %>
 <%@ include file="Foodmenu.jsp" %>
-<form action="cart.jsp">
+<form action="cart.jsp" method="post">
 <%
 request.setCharacterEncoding("utf-8");
 int pid = Integer.parseInt(request.getParameter("pid"));
-String sql ="select name, price from item where pid=?";
 
-Connection conn = util.ConnectionPool.get();
-PreparedStatement stmt = conn.prepareStatement(sql);
-stmt.setInt(1, pid);
-ResultSet rs = stmt.executeQuery();//rs에 리스트상태로 저장됨
-
-String str="<table border=0 cellpadding=20 cellspacing=20><tr>";
-String info = "<input type=hidden name=iname value=";
-if(rs.next()){
-	String name = rs.getString("name");
-	String price = rs.getString("price");
-	str += "<td>"+name+"</td><tr><td>"+price+"원</td></tr>";
-	info += name + "><input type=hidden name=price value="+price+">";
-	str+="</table>";
+ItemlistDao idao = new ItemlistDao();
+String str = idao.info(pid);
+if(str!=null)
 	out.print(str);
-	out.print(info);
-}
-rs.close(); stmt.close(); conn.close();
+else
+	out.print("상품 정보가 없습니다.");
 %>
-수량선택도 나중에 추가하기<br>
+<br>
+<input type="hidden" name="pid" value=<%=pid%>>
+<input type="number" name="quantity" min="1" value="1" required><br>
 <input type="submit" value="장바구니에 담기">
 </form>
 </body>
