@@ -105,22 +105,37 @@ public class ItemlistDao {
 	public boolean intoCart(int pid, int qu, String uid) throws NamingException, SQLException
 	{
 		Connection conn = null;
-		PreparedStatement stmt = null;
+		PreparedStatement stmts = null;
+		PreparedStatement stmti = null;
+		ResultSet rs = null;
 
 		try {
-			String sql ="insert into cart(uid, pid, quantity) values(?, ?, ?)";
+			String selectq = "select name, price from item where pid=?";
+			String sql ="insert into cart(uid, pid, quantity, pname, price) values(?, ?, ?, ?, ?)";
 			conn = util.ConnectionPool.get();
-			stmt = conn.prepareStatement(sql);
+			stmts = conn.prepareStatement(selectq);
 			
-			stmt.setString(1, uid);
-			stmt.setInt(2, pid);
-			stmt.setInt(3, qu);
-			int count = stmt.executeUpdate();
+			stmts.setInt(1, pid);
+			rs = stmts.executeQuery();
+			
+			if(rs.next()) {
+				stmti = conn.prepareStatement(sql);
+				stmti.setString(1, uid);
+				stmti.setInt(2, pid);
+				stmti.setInt(3, qu);
+				stmti.setString(4, rs.getString("name"));
+				stmti.setInt(5, rs.getInt("price"));
+			}
+			else {
+				return false;
+			}
+			int count = stmti.executeUpdate();
 			return (count > 0) ? true : false;
 		} finally {
-			if (stmt != null)stmt.close();
+			if(rs!=null)rs.close();
+			if (stmti != null)stmti.close();
+			if(stmts!=null)stmts.close();
 			if (conn != null)conn.close();
 		}
 	}
 }
-
