@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>식품>과일</title>
 </head>
 <body>
-<table border=0 align=center cellpadding=20 cellspacing=20><tr>
 <%@ page import ="java.sql.*" %>
 <%@ page import ="util.ConnectionPool" %>
 <%@ page import = "dao.ItemlistDao" %>
@@ -23,6 +22,5 @@ if(str!=null){
 	out.print("등록된 상품이 없습니다.");
 }
 %>
-</table>
 </body>
 </html>
