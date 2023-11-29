@@ -4,16 +4,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<%-- <link rel="stylesheet" href="testcss.css"> --%>
 </head>
 <body>
-<h1 align="center">식품</h1>
+<h3 align="center">식품</h3>
 
-<a href="./food.jsp">전체 </a>
-<a href="./fruit.jsp">과일 </a>
-<a href="vegetable.jsp">채소 </a>
-<a href="dairy.jsp">유제품 </a>
-<a href="noodle.jsp">라면</a>
-<br><hr><br>
+<table>
+<tr>
+<td width=100><a href="./food.jsp">전체</a></td>
+<td width=100><a href="./fruit.jsp">과일</a></td>
+<td width=100><a href="vegetable.jsp">채소</a></td>
+<td width=100><a href="dairy.jsp">유제품</a></td>
+<td width=100><a href="noodle.jsp">라면</a></td>
+</tr>
+</table>
+<hr>
+
 </body>
 </html>
