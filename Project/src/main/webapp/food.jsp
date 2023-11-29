@@ -7,11 +7,10 @@
 <title>식품 카테고리</title>
 </head>
 <body>
-<table border=0 align=center cellpadding=20 cellspacing=20><tr>
+<%@ include file="Foodmenu.jsp" %>
 <%@ page import ="java.sql.*" %>
 <%@ page import ="util.ConnectionPool" %>
 <%@ page import = "dao.ItemlistDao" %>
-<%@ include file="Foodmenu.jsp" %>
 <%
 request.setCharacterEncoding("utf-8");
 
@@ -23,6 +22,5 @@ if(str!=null){
 	out.print("등록된 상품이 없습니다.");
 }
 %>
-</table>
 </body>
 </html>
