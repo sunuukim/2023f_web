@@ -11,23 +11,23 @@ public class ItemlistDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select pid, name, price from item where category=?";
+			String sql = "select pid, name, price, image from item where category=?";
 			conn = util.ConnectionPool.get();
 			stmt = conn.prepareStatement(sql);
 			
 			stmt.setString(1, category);
 			rs = stmt.executeQuery();
 
-			//String str="<table border=0 align=center cellpadding=20 cellspacing=20><tr>";
-			String str= "";
+			String str="<table border=0 align=center cellpadding=20 cellspacing=20><tr>";
 			int count = 0;
 			while(rs.next())
 			{
 				if(count!=0 && count%5==0)str += "<tr>";
-				str += "<td width=100><a href='iteminfo.jsp" + "?pid=" + rs.getString("pid") + "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원<br></td>";
+				str += "<td width=200><img width=200 src='image/"+ rs.getString("image") + "'><a href='iteminfo.jsp" + "?pid=" + rs.getString("pid") + "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원<br></td>";
 				count++;
 				if(count!=0 && count%5==0)str += "</tr>";
 			}
+			str+="</table>";
 			return str;
 		} finally {
 			if (stmt != null)
@@ -44,24 +44,23 @@ public class ItemlistDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select pid, name, price from item where type=?";
+			String sql = "select pid, name, price, image from item where type=?";
 			conn = util.ConnectionPool.get();
 			stmt = conn.prepareStatement(sql);
 			
 			stmt.setString(1, t);
 			rs = stmt.executeQuery();
 
-			//String str="<table border=0 align=center cellpadding=20 cellspacing=20><tr>";
-			String str="";
+			String str="<table border=0 align=center cellpadding=20 cellspacing=20><tr>";
 			int count = 0;
 			while(rs.next())
 			{
 				if(count!=0 && count%5==0)str += "<tr>";
-				str += "<td width=100><a href='iteminfo.jsp" + "?pid=" + rs.getString("pid") + "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원<br></td>";
+				str += "<td width=200><img width=200 src='image/"+ rs.getString("image")+ "'><a href='iteminfo.jsp" + "?pid=" + rs.getString("pid") + "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원<br></td>";
 				count++;
 				if(count!=0 && count%5==0)str += "</tr>";
 			}
-			//str+="</table>";
+			str+="</table>";
 			return str;
 		} finally {
 			if (stmt != null)
@@ -71,26 +70,34 @@ public class ItemlistDao {
 			if(rs!=null)rs.close();
 		}
 	}
+	
 	public String info(int pid) throws NamingException, SQLException
 	{
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			String sql ="select name, price, explanation from item where pid=?";
+			String sql ="select name, price, explanation, image from item where pid=?";
 			conn = util.ConnectionPool.get();
 			stmt = conn.prepareStatement(sql);
 			
 			stmt.setInt(1, pid);
 			rs = stmt.executeQuery();
 
-			String str="<table border=0 align=center cellpadding=20 cellspacing=20><tr>";
+			String str="<table width=100% align=center cellpadding=20 cellspacing=10><tr>";
 			if(rs.next()){
 				String name = rs.getString("name");
 				String price = rs.getString("price");
 				String exp = rs.getString("explanation");
-				str += "<td>"+name+"</td><tr><td>"+price+"원</td></tr><tr><td>"+ exp +"</td></tr>";
-				str+="</table>";
+				String imgsrc = rs.getString("image");
+				str += "<td width=50% rowspan=3><img width=100% src='image/"+imgsrc+"'></td><td height=80 colspan=2>"+ name
+						+ "</td></tr><tr><td colspan=2>"+ price +"원</td></tr>";
+				str += "<tr><td><form action='cart.jsp' method='post'>"
+						+ "<input type='hidden' name='pid' value="+ pid
+						+">수량선택 "
+						+ "<input type='number' name='quantity' min='1' value='1' style='width:50px;' required></td>"
+						+ "<td height=50 align=right><input type='submit' value='장바구니에 담기'></form></td></tr>";
+				str += "<tr><td>"+exp+"</td></tr></table>";
 			}
 			return str;
 		} finally {
@@ -139,3 +146,4 @@ public class ItemlistDao {
 		}
 	}
 }
+
