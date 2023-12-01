@@ -1,14 +1,16 @@
 //아직 오류 검증 안함
+//장바구니 데이터베이스의 정보들을 리스트로 변환할 예정
 package dao;
 
 import java.sql.*;
 import java.util.*;
 import java.util.ArrayList;
 import java.sql.SQLException;
+import java.sql.Connection;
 import javax.naming.NamingException;
 
 public class BasketDao {
-	private static final String SELECT_BASKET_ITEMS_QUERY="SELECT pname, quantity, price FROM addbaskettable WHERE validity=1";
+	private static final String SELECT_BASKET_ITEMS_QUERY="SELECT pid,image, name, quantity, price FROM uid WHERE validity=1";
 	
 	public ArrayList<BasketItem> getBasketItems() {
         ArrayList<BasketItem> basketItemList = new ArrayList<>();
@@ -18,12 +20,14 @@ public class BasketDao {
              ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
-                String productName = rs.getString("pname");
+            	int pid=rs.getInt("pid");
+            	String image = rs.getString("image");
+                String name = rs.getString("name");
                 int quantity = rs.getInt("quantity");
                 double price = rs.getDouble("price");
 
                 // BasketItem 객체를 생성하여 ArrayList에 추가
-                BasketItem basketItem = new BasketItem(pname, quantity, price); //pname -> productName으로 바꿔야할지 확인
+                BasketItem basketItem = new BasketItem(pid, image, name, quantity, price); 
                 basketItemList.add(basketItem);
             }
         } catch (SQLException | NamingException e) {
@@ -35,22 +39,43 @@ public class BasketDao {
 
     // BasketItem 클래스 정의
     public class BasketItem {
-        private String pname;
+    	private int pid;
+    	private String image;
+        private String name;
         private int quantity;
         private double price;
 
-        public BasketItem(String pname, int quantity, double price) {
-            this.pname = pname;
+        public BasketItem(int pid, String image, String name, int quantity, double price) {
+            this.pid=pid;
+        	this.image=image;
+        	this.name = name;
             this.quantity = quantity;
             this.price = price;
         }
-    	public String getpName()
+        
+        public int getPid()
+        {
+        	return pid;
+        }
+        public int setPid()
+        {
+        	this.pid=pid;
+        }
+        public String getImage()
+        {
+        	return image;
+        }
+        public String setImage()
+        {
+        	this.image=image;
+        }
+    	public String getName()
     	{
-    		return pname;
+    		return name;
     	}
-    	public void setName(String pname)
+    	public void setName(String name)
     	{
-    		this.pname=pname;
+    		this.name=name;
     	}
     	public int getQuantity()
     	{
