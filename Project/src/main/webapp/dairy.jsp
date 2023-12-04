@@ -15,7 +15,7 @@
 request.setCharacterEncoding("utf-8");
 
 ItemlistDao idao = new ItemlistDao();
-String str = idao.listing("유제품");
+String str = idao.listing("유제품", 0);
 if(str!=null){
 	out.print(str);
 }else{
