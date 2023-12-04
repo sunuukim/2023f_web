@@ -5,63 +5,43 @@ import javax.naming.NamingException;
 import java.util.*;
 
 public class ItemlistDao {
-	public String listingall(String category) throws NamingException, SQLException
-	{
-		Connection conn = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		try {
-			String sql = "select pid, name, price, image from item where category=?";
-			conn = util.ConnectionPool.get();
-			stmt = conn.prepareStatement(sql);
-			
-			stmt.setString(1, category);
-			rs = stmt.executeQuery();
-
-			String str="<table border=0 align=center cellpadding=20 cellspacing=20><tr>";
-			int count = 0;
-			while(rs.next())
-			{
-				if(count!=0 && count%5==0)str += "<tr>";
-				str += "<td width=200><img width=200 src='image/"+ rs.getString("image") + "'><a href='iteminfo.jsp" + "?pid=" + rs.getString("pid") + "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원<br></td>";
-				count++;
-				if(count!=0 && count%5==0)str += "</tr>";
-			}
-			str+="</table>";
-			return str;
-		} finally {
-			if (stmt != null)
-				stmt.close();
-			if (conn != null)
-				conn.close();
-			if(rs!=null)rs.close();
-		}
-	}
 	
-	public String listing(String t) throws NamingException, SQLException
+	public String listing(String t, int all) throws NamingException, SQLException
 	{
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
+		String sql = "select pid, name, price, image from item where ";
 		try {
-			String sql = "select pid, name, price, image from item where type=?";
+			if(all==1) {
+				sql += "category=?";
+			}
+			else {
+				sql += "type=?";
+			}
 			conn = util.ConnectionPool.get();
 			stmt = conn.prepareStatement(sql);
 			
 			stmt.setString(1, t);
 			rs = stmt.executeQuery();
-
-			String str="<table border=0 align=center cellpadding=20 cellspacing=20><tr>";
+			
+			String result = "<table border=1 align=center cellpadding=10 cellspacing=10>";
+			String str="<tr>";
+			String img = "<tr>";
 			int count = 0;
-			while(rs.next())
-			{
-				if(count!=0 && count%5==0)str += "<tr>";
-				str += "<td width=200><img width=200 src='image/"+ rs.getString("image")+ "'><a href='iteminfo.jsp" + "?pid=" + rs.getString("pid") + "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원<br></td>";
+			while(rs.next()){
+				str += "<td><a href='iteminfo.jsp" + "?pid=" + rs.getString("pid") + "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원</td>";
+				img += "<td width=200 height=200><img width=200 src='image/"+ rs.getString("image")+ "'></td>";
 				count++;
-				if(count!=0 && count%5==0)str += "</tr>";
+				if(count!=0 && count%5==0) {
+					result += img+"</tr>"+str+"</tr>";
+					str = "<tr>";
+					img = "<tr>";
+				}
 			}
-			str+="</table>";
-			return str;
+			if(count%5!=0)result += img+"</tr>"+str+"</tr>";
+			result += "</table>";
+			return result;
 		} finally {
 			if (stmt != null)
 				stmt.close();
