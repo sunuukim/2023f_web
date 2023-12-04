@@ -14,7 +14,7 @@
 
 <%
 ItemlistDao idao = new ItemlistDao();
-String str = idao.listing("채소");
+String str = idao.listing("채소", 0);
 if(str!=null){
 	out.print(str);
 }else{
