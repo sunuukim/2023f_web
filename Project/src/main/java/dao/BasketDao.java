@@ -57,7 +57,7 @@ public class BasketDao {
         {
         	return pid;
         }
-        public int setPid()
+        public void setPid(int pid)
         {
         	this.pid=pid;
         }
@@ -65,7 +65,7 @@ public class BasketDao {
         {
         	return image;
         }
-        public String setImage()
+        public void setImage(String image)
         {
         	this.image=image;
         }
@@ -93,5 +93,11 @@ public class BasketDao {
     	{
     		this.price=price;
     	}
+    }
+    
+    public double calculateTotalPrice(int uid)
+    {
+    	ServicebasketDao servicebasketDao=new ServicebasketDao();
+    	return servicebasketDao.calculateTotalPrice(uid);
     }
 }
