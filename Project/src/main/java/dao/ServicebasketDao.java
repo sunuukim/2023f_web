@@ -1,3 +1,5 @@
+//장바구니 기능(추가, 삭제, 선택삭제) 중 선택삭제 부분만 남음
+//pid도 장바구니 DB에 넣어줘야하는지 고민하기
 package dao;
 
 import java.sql.*;
@@ -12,29 +14,6 @@ public class ServicebasketDao {
 	private static final String CALCULATE_ITEMS_PRICE_QUERY="SELECT quantity, price FROM basket WHERE uid=?";
 	private static final String UPDATE_ITEM_QUANTITY_QUERY="UPDATE basket SET quantity=? WHERE uid=? AND pid=?";
 	
-	//상품저장
-	public boolean addToBasket(int uid, int pid, String image, String name, int quantity, double price)
-	{
-		try(Connection conn=ConnectionPool.get();
-			PreparedStatement stmt=conn.prepareStatement(INSERT_BASKET_ITEM_QUERY))
-		{
-			stmt.setInt(1, uid);
-			stmt.setInt(2, pid);
-			stmt.setString(3, image);
-			stmt.setString(4,  name);
-			stmt.setInt(5, quantity);
-			stmt.setDouble(6, price);
-			
-			int rowsAffected=stmt.executeUpdate();
-			return rowsAffected>0;
-		}
-		catch(SQLException|NamingException e)
-		{
-			e.printStackTrace();
-		}
-		
-		return false;
-	}
 	
 	//선택상품 삭제
 	public boolean deleteItem(int uid, int pid)
