@@ -10,14 +10,13 @@
 
 <table>
 <tr>
-<td width=100><a href="life.jsp">전체</a></td>
-<td width=100><a href="clean.jsp">청소/세탁</a></td>
-<td width=100><a href="kitchen.jsp">주방용품</a></td>
-<td width=100><a href="stationery.jsp">문구류</a></td>
-<td width=100><a href="beauty.jsp">헤어/뷰티</a></td>
+<td width=100><a href="category.jsp?c=생활용품">전체</a></td>
+<td width=100><a href="typedetail.jsp?c=생활용품&t=청소세탁">청소/세탁</a></td>
+<td width=100><a href="typedetail.jsp?c=생활용품&t=주방용품">주방용품</a></td>
+<td width=100><a href="typedetail.jsp?c=생활용품&t=문구류">문구류</a></td>
+<td width=100><a href="typedetail.jsp?c=생활용품&t=헤어뷰티">헤어/뷰티</a></td>
 </tr>
 </table>
-<hr>
 
 </body>
 </html>
