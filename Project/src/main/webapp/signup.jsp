@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="signup.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -18,39 +19,17 @@ String udad=request.getParameter("dad");
 
 SignDao dao=new SignDao();
 if(dao.exists(uid)){
-	out.print("이미 가입한 회원입니다.");
+	out.print("<a class=page-hdr>");
+	out.print("이미 가입한 회원입니다."+"</a>"+"<br><br><br><br><hr>");
+	out.print("<form method=post action=signup.html>");
+	out.print("<input type=submit class=page-tmenu value=돌아가기>"+"</form>");
 	return;
+}else if(!upass.equals(rupass)){
+	out.print("패스워드가 동일하지 않습니다.");
+	out.print("<form method=post action=signup.html>"+"<hr>"+
+	"<input type=submit class=page-tmenu value=돌아가기>"+"</form>");
 }
 
-if(!upass.isEmpty()||!rupass.isEmpty()||!uname.isEmpty()||!utel.isEmpty()||!udad.isEmpty()){
-	if(uname.isEmpty()){
-		out.print("이름을 입력해 주세요.");
-		out.print("<form method=post action=signup.html>"+"<hr>"+
-		"<input type=submit value=돌아가기>"+"</form>");
-	}else if(utel.isEmpty()){
-		out.print("전화 번호를 입력해 주세요.");
-		out.print("<form method=post action=signup.html>"+"<hr>"+
-		"<input type=submit value=돌아가기>"+"</form>");
-	}else if(udad.isEmpty()){
-		out.print("배송지를 입력해 주세요.");
-		out.print("<form method=post action=signup.html>"+"<hr>"+
-		"<input type=submit value=돌아가기>"+"</form>");
-	}else if(upass.equals(rupass)){
-		if(dao.insert(uid,upass,uname,udad,utel)){
-			out.print("회원 가입이 완료되었습니다.");
-			out.print("<form method=post action=login.html>"+"<hr>"+
-					"<input type=submit value=로그인창으로>"+"</form>");
-		}
-	}else{
-		out.print("패스워드가 동일하지 않습니다.");
-		out.print("<form method=post action=signup.html>"+"<hr>"+
-		"<input type=submit value=돌아가기>"+"</form>");
-		}
-}else {
-	out.print("패스워드를 입력해주세요");
-	out.print("<form method=post action=signup.html>"+"<hr>"+
-			"<input type=submit value=돌아가기>"+"</form>");
-}
 %>
 </body>
 </html>

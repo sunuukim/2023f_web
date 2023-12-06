@@ -8,96 +8,82 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="mypage.css">
 <meta charset="UTF-8">
 <title>My page</title>
 </head>
 <body>
 <%String sid=(String) session.getAttribute("id"); %>
-<div class=container><font size=7><center>마이 페이지</center></font></div><hr>
-<style>
-	div.left{
-		float:left;
-		background:#ff0;
-	}
-	div.content{
-		float:left;
-		background:#f0f;
-	}
-	div.logout{
-		float:right;
-	}
-</style>
+<div class="page-hdr">마이 페이지</div><br><br><br><br><hr>
 
 <form method=post action=logout.jsp>
-<div class=logout><input type=submit value="로그아웃">
+<div class="page-lgout"><input type=submit value="로그아웃">
 </div>
 </form>
 
-<div class=left>
-<table border=1 width=300 height=500>
-	<tr>
-		<th>
-			<a href="myinfo.jsp"><font size=6>내 정보 확인</font></a>
-		</th>
-	</tr>
-	<tr>
-		<th>
-			<a href="?.?"><font size=6>장바구니</font></a>
-		</th>
-	</tr>
-	<tr>
-		<th>
-			<a href="daddress.html"><font size=6>배송지 변경</font></a>
-		</th>
-	</tr>
-	<tr>
-		<th>
-			<a href="chpasswd.html"><font size=6>패스워드 변경</font></a>
-		</th>
-	</tr>
-	<tr>
-		<th>
-			<a href="withdraw.html"><font size=6>회원 탈퇴</font></a>
-		</th>
-	</tr>
+<div class="page-bt">
+<table>
+	<tr><th>
+		<form method=post action="myinfo.jsp">
+			<input type=submit value="내 정보 확인" class="page-menu">
+		</form>
+	</th></tr>
+	<tr><th>
+		<form method=post action="?.jsp">
+			<input type=submit value="장바구니" class="page-menu">
+		</form>
+	</th></tr>
+	<tr><th>
+		<form method=post action="daddress.html">
+			<input type=submit value="배송지 변경" class="page-menu">
+		</form>
+	</th></tr>
+	<tr><th>
+		<form method=post action="chpasswd.html">
+			<input type=submit value="패스워드 변경" class="page-menu">
+		</form>
+	</th></tr>
+	<tr><th>
+		<form method=post action="withdraw.jsp">
+			<input type=submit value="회원 탈퇴" class="page-menu">
+		</form>
+	</th></tr>
 </table>
 </div>
 
-<div class=content>
+<div class="page-main">
 <form method=post action=?>
 <table>
-<tr>
-	<td>
-		<pre>
-		<%		
-		String sql="select price,count,explanation,sdate,ddate,delivery from item";
+	<tr>
+		<td>
+			<%		
+			String sql="select pid,name,price,quntity,explanation,sdate,ddate,delivery,category,type from item";
 		
-		Connection conn=ConnectionPool.get();
-		PreparedStatement stmt=conn.prepareStatement(sql);
-		ResultSet rs=stmt.executeQuery();
+			Connection conn=ConnectionPool.get();
+			PreparedStatement stmt=conn.prepareStatement(sql);
+			ResultSet rs=stmt.executeQuery();
 		
-		Date now=new Date(); 
-		SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
-		String date=df.format(now);
+			Date now=new Date(); 
+			SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
+			String date=df.format(now);
 		
-while(rs.next()){
-	String str="";
-	int del=rs.getInt("delivery");
+			while(rs.next()){
+				String str="";
+				int del=rs.getInt("delivery");
 	
-	if(del==0) out.print("배송 중 ");
-	else if(del==1) out.print("배송완료 ");
-	else out.print("배송취소 ");
+				if(del==0) out.print("배송 중 ");
+				else if(del==1) out.print("배송완료 ");
+				else out.print("배송취소 ");
 	
-	out.print(date+"<br><img src=C:/Users/Towa/Desktop/웹프로그래밍/사과.jpg height=300 width=300><br><br>");
-	str=str+"\t"+rs.getString("price")+" 원·"+rs.getString("count")+" 개 "+
-	"\t\t\t\t\t\t\t<input type=submit value='장바구니 담기'>"
-	+"<br><br>";
-	out.print(str);
-}
-	conn.close();
-	stmt.close();
-		%>
-		</pre>
+				out.print(date+"<br>"+"<img src=C:/Users/Towa/Desktop/웹프로그래밍/사과.jpg height=300 width=300><br><br>");
+				str=str+"\t"+rs.getString("price")+" 원·"+rs.getString("quntity")+" 개 "
+				+"\t\t\t\t"+"<input type=submit value='장바구니 담기' class='page-mainsub'>"
+				+"<br><br>";
+				out.print(str);
+			}
+			conn.close();
+			stmt.close();
+			%>
 	</td>
 </tr>
 </table>

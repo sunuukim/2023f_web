@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="login.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Login Page</title>
 </head>
 <body>
-<h1>로그인 페이지</h1><hr>
+	<a class="page-hdr">로그인 페이지</a><br><br><br><br><br><hr>
 <form method="post" action="login.jsp">
-	<table>
+	<table class="page-main">
 		<tr>
-			<td>아이디</td><td><input type=text size=25 name=id placeholder="Email address" required></td>
+			<td class="page-sub">아이디 : </td>
+			<td><input type=text class="page-add" name=id placeholder="Email address" required></td>
 		</tr>
 		<tr>
-			<td>패스워드</td> <td><input type=password size=25 name=pw></td>
+			<td class="page-sub">패스워드 : </td> 
+			<td><input type=password class="page-add" name=pw></td>
 		</tr>
 	</table>
-	<br>
-	<input type="submit" value="로그인"><br>
-</form>
-<br>
-<form method="post" action="signup.html">
-	<input type="submit" value="회원 가입 페이지">
-</form>
+<hr>
+<table class="page-main">
+	<tr>
+		<td>
+			<input type="submit" value="로그인" class="page-tmenu"></form><br>
+		</td>
+		<td>
+			<form method="post" action="signup.html">
+			<input type="submit" value="회원 가입 페이지" class="page-tmenu">
+			</form>
+		</td>
+	</tr>
+</table>
 </body>
 </html>

@@ -1,21 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link rel="stylesheet" href="daddress.css">
 <meta charset="UTF-8">
 <title>Delivery Address Change</title>
 </head>
 <body>
-<h1>배송지 변경</h1>
-<hr><br>
+<a class="page-hdr">배송지 변경</a>
+<br><br><br><br><br><hr>
 <form method="post" action="daddress.jsp">
-	<table>
+	<table class="page-main">
 		<tr>
-			<th>변경할 배송지</th>
-			<th><input type="text" size="50" name=chdad></th>
+			<td>변경할 배송지 : </td>
+			<td><textarea class="page-add" name=chdad></textarea></td>
 		</tr>
 	</table>
-	<br>
-	<input type="submit" value="배송지 변경">
+	<hr>
+	<table class="page-tcen">
+		<tr>
+			<td>
+				<input type="submit" value="배송지 변경" class="page-tmenu"></form>
+			</td>
+			<td>
+				<form method="post" action="mypage.jsp">
+					<input type="submit" value="돌아가기" class="page-tmenu">
+			</td>
+		</tr>
+	</table>
+	
 </form>
 </body>
 </html>

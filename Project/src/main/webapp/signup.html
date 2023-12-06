@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="core.css">
+	<link rel="stylesheet" href="signup.css">
 <meta charset="UTF-8">
 <title>SignUp</title>
 </head>
 <body>
-<h1>회원 가입 페이지</h1><hr>
-<form method="post" action="signup.jsp">
-	<table border="5" align="center" >
+<a class="page-hdr">회원 가입 페이지</a><br><br><br><br><hr>
+<p class="page-cen">회원 정보를 입력해주세요</p><hr>
+
+<form method="post" action="signup.jsp" >
+	<table class="page-tcen">
 		<tr>
-				<td>아이디</td>
-				<td><input type=text size=25 name=id placeholder="Email address" required></td>
+			<td class="page-rgt">아이디 : </td>
+			<td><input type=text class="page-bton" name=id placeholder="Email address" required></td>
 		</tr>
 		<tr>
-			<td>패스워드</td> 
-			<td><input type=password size=25 name=pw></td>
+			<td class="page-rgt">패스워드 : </td> 
+			<td><input type=password class="page-bton" name=pw required></td>
 		</tr>
 		<tr>
-			<td>패스워드(확인)</td> 
-			<td><input type=password size=25 name=rpw></td>
+			<td class="page-rgt">패스워드(확인) : </td> 
+			<td><input type=password class="page-bton" name=rpw required></td>
 		</tr>
 		<tr>
-			<td>이름</td> 
-			<td><input type=text size=25 name=na></td>
+			<td class="page-rgt">이름 : </td> 
+			<td><input type=text class="page-bton" name=na required></td>
 		</tr>
 		<tr>
-			<td>전화번호</td> 
-			<td><input type=text size=25 name=tel placeholder="010-0000-0000"></td>
+			<td class="page-rgt">전화번호 : </td> 
+			<td><input type=text class="page-bton" name=tel placeholder="010-0000-0000" required></td>
 		</tr>
 		<tr>
-			<td>배송지</td>
-			<td><textarea cols="50" name=dad></textarea></td>
+			<td class="page-rgt">배송지 : </td>
+			<td><textarea class="page-btons" name=dad required></textarea></td>
 		</tr>
 	</table>
 	<hr>
-	<table align="center">
+	<table class="page-tcen">
 		<tr>
 			<td>
-				<input type="submit" style="height: 50px;width:100px" value="회원 가입"></form>
+				<input type="submit" value="회원 가입" class="page-tmenu"></form>
 			</td>
 			<td>
 				<form method="post" action="login.html">
-					<input type="submit" value="로그인창으로">
+					<input type="submit" value="로그인창으로" class="page-tmenu">
 				</form>
 			</td>
 		</tr>
 	</table>
-	
-	
 </body>
 </html>

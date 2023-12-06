@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+body{
+	background-color: floralwhite;
+	font-family: 'Malgun Gothic','Arial';
+}
+
+.page-hdr{
+	z-index: 8;
+	position: fixed;
+	width: 100%;
+	height: 100px;
+	line-height: 80px;
+	text-align: center;
+	font-size: 3.3em;
+	font-weight: bold;
+	background-color: floralwhite;
+	color:black;
+}
+
+.page-main{
+	font-size: 35px;
+	text-align: right;
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.page-tcen{
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.page-tmenu{
+	width: 170px;
+	height: 80px;
+	font-size: 1.3em;
+}
+
+.page-add{
+	width: 550px;
+	height: 90px;
+	font-size: 35px;
+}

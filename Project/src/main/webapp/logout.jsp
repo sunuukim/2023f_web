@@ -8,10 +8,8 @@
 </head>
 <body>
 <hr>
-<%
-session.invalidate();
-out.print("로그아웃 되셨습니다.");
-%>
+<%session.invalidate();%>
+로그아웃 되셨습니다.
 <hr>
 <form method=post action="login.html">
 <input type=submit value="로그인 창으로">
