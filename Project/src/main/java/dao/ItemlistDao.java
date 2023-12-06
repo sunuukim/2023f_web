@@ -11,7 +11,7 @@ public class ItemlistDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "select pid, name, price, image from item where ";
+		String sql = "select pid, name, category, price, image from item where ";
 		try {
 			if(all==1) {
 				sql += "category=?";
@@ -25,13 +25,13 @@ public class ItemlistDao {
 			stmt.setString(1, t);
 			rs = stmt.executeQuery();
 			
-			String result = "<table border=1 align=center cellpadding=10 cellspacing=10>";
+			String result = "<table align=center cellpadding=10 cellspacing=10>";
 			String str="<tr>";
 			String img = "<tr>";
 			int count = 0;
 			while(rs.next()){
-				str += "<td><a href='iteminfo.jsp" + "?pid=" + rs.getString("pid") + "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원</td>";
-				img += "<td width=200 height=200><img width=200 src='image/"+ rs.getString("image")+ "'></td>";
+				str += "<td><a href='iteminfo.jsp?c="+ rs.getString("category") + "&pid=" + rs.getString("pid") + "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원</td>";
+				img += "<td width=200 height=200><a href='iteminfo.jsp?c="+ rs.getString("category") + "&pid=" + rs.getString("pid") +"'><img width=200 src='image/"+ rs.getString("image")+ "'></a></td>";
 				count++;
 				if(count!=0 && count%5==0) {
 					result += img+"</tr>"+str+"</tr>";
@@ -41,6 +41,7 @@ public class ItemlistDao {
 			}
 			if(count%5!=0)result += img+"</tr>"+str+"</tr>";
 			result += "</table>";
+			if(count==0)result="";
 			return result;
 		} finally {
 			if (stmt != null)
@@ -57,27 +58,29 @@ public class ItemlistDao {
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
 		try {
-			String sql ="select name, price, explanation, image from item where pid=?";
+			String sql ="select name, category, price, explanation, image from item where pid=?";
 			conn = util.ConnectionPool.get();
 			stmt = conn.prepareStatement(sql);
 			
 			stmt.setInt(1, pid);
 			rs = stmt.executeQuery();
 
-			String str="<table width=100% align=center cellpadding=20 cellspacing=10><tr>";
+			String str="<table cellpadding=10 cellspacing=10><tr>";
 			if(rs.next()){
 				String name = rs.getString("name");
 				String price = rs.getString("price");
 				String exp = rs.getString("explanation");
 				String imgsrc = rs.getString("image");
-				str += "<td width=50% rowspan=3><img width=100% src='image/"+imgsrc+"'></td><td height=80 colspan=2>"+ name
-						+ "</td></tr><tr><td colspan=2>"+ price +"원</td></tr>";
+				
+				str += "<td><img width=100% src='image/"+imgsrc+"'></td></tr></table>"
+						+ "<table><tr><td colspan=2 class=pname>"+ name
+						+ "</td></tr><tr><td colspan=2 class=explain>"+ exp +"</td></tr><tr><td class=price colspan=2>"+price+"원</td></tr>";
 				str += "<tr><td><form action='cart.jsp' method='post'>"
 						+ "<input type='hidden' name='pid' value="+ pid
-						+">수량선택 "
-						+ "<input type='number' name='quantity' min='1' value='1' style='width:50px;' required></td>"
-						+ "<td height=50 align=right><input type='submit' value='장바구니에 담기'></form></td></tr>";
-				str += "<tr><td>"+exp+"</td></tr></table>";
+						+">수량선택<br><br>"
+						+ "<input type='number' name='quantity' min='1' value='1' required>  개<br></td><td class=cartb>"
+						+ "<input type='submit' value='장바구니에 담기'></form><br></td></tr>";
+				str += "</table>";
 			}
 			return str;
 		} finally {
@@ -127,4 +130,3 @@ public class ItemlistDao {
 		}
 	}
 }
-
