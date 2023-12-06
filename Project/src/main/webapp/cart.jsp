@@ -34,8 +34,9 @@ else
 }
 %>
 <br><br>
-<form action="<%=action%>">
+<form action="<%=action%>" method='post'>
 <input type="hidden" name="pid" value=<%=pid%>>
+<input type="hidden" name="c" value=<%=request.getParameter("c")%>>
 <input type="submit" value="<%=val%>">
 </form>
 </body>
