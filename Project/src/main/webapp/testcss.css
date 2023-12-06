@@ -1,0 +1,66 @@
+@charset "UTF-8";
+
+a{
+	color: black;
+	text-decoration-line:none;
+}
+
+input[type='submit'] {
+	background-color: cornsilk;
+	color: #D44010;
+	border: 1px solid #D44010;
+	border-radius: 10px;
+	padding: 10px 16px;
+	font-size: 12pt;
+	font-weight: bold;
+}
+input[type='number']{
+	width:50px;
+	padding: 5px;
+	font-size:12pt;
+}
+.info td{
+	padding-top:15px;
+	padding-left:10px;
+	padding-right:20px;
+}
+td[class='explain']{
+	height: 240px;
+	vertical-align: top;
+	font-size:20pt;
+	padding-right:30px;
+}
+td[class='pname']{
+	height: 80px;
+	font-size:24pt;
+	font-weight:bold;
+	padding-top:20px;
+}
+td[class='cartb']{
+	vertical-align: bottom;
+}
+td[class='price']{
+	font-size:20pt;
+	font-weight: bold;
+	vertical-align: bottom;
+}
+.header{
+	text-align:left;
+	padding-left:20px;
+	padding-top:5px;
+	background-color: lavender;
+	font-size:15pt;
+	font-weight:bold;
+}
+.menubar{
+	background-color:lavender;
+	font-weight: bold;
+}
+.menubar td{
+	text-align:center;
+	padding:5px;
+}
+.info table{
+	float:left;
+	width:50%;
+}
