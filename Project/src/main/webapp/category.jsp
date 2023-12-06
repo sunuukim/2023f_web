@@ -5,8 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <%
+int all = 1;
 String category = request.getParameter("c");
 String ifile = "";
+if(category==null)category="전체";
 switch(category){
 case "식품":
 	ifile = "Foodmenu.jsp";
@@ -20,6 +22,10 @@ case "패션의류":
 case "레저스포츠":
 	ifile = "Sportsmenu.jsp";
 	break;
+default:
+	ifile = "Mainmenu.jsp";
+	all=2;
+	break;
 }
 %>
 <title><%=category%> 카테고리</title>
@@ -31,9 +37,8 @@ case "레저스포츠":
 <body>
 <%
 request.setCharacterEncoding("utf-8");
-
 ItemlistDao idao = new ItemlistDao();
-String str = idao.listing(category, 1);
+String str = idao.listing(category, all);
 if(str!=""){
 	out.print(str);
 }else{
