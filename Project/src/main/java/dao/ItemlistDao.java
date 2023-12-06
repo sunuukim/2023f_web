@@ -71,16 +71,20 @@ public class ItemlistDao {
 				String price = rs.getString("price");
 				String exp = rs.getString("explanation");
 				String imgsrc = rs.getString("image");
+				String c = rs.getString("category");
 				
 				str += "<td><img width=100% src='image/"+imgsrc+"'></td></tr></table>"
 						+ "<table><tr><td colspan=2 class=pname>"+ name
 						+ "</td></tr><tr><td colspan=2 class=explain>"+ exp +"</td></tr><tr><td class=price colspan=2>"+price+"원</td></tr>";
 				str += "<tr><td><form action='cart.jsp' method='post'>"
 						+ "<input type='hidden' name='pid' value="+ pid
-						+">수량선택<br><br>"
+						+"><input type='hidden' name='c' value="+ c +">수량선택<br><br>"
 						+ "<input type='number' name='quantity' min='1' value='1' required>  개<br></td><td class=cartb>"
 						+ "<input type='submit' value='장바구니에 담기'></form><br></td></tr>";
 				str += "</table>";
+			}
+			else {
+				str = null;
 			}
 			return str;
 		} finally {
