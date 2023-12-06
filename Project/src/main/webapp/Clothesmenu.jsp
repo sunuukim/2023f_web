@@ -12,7 +12,7 @@
 <td width=20%><a href="typedetail.jsp?c=패션의류&t=상의">상의</a></td>
 <td width=20%><a href="typedetail.jsp?c=패션의류&t=하의">하의</a></td>
 <td width=20%><a href="typedetail.jsp?c=패션의류&t=신발">신발</a></td>
-<td width=20%><a href="typedetail.jsp?c=패션의류&t=언더웨어">언더웨어</a></td>
+<td width=20%><a href="typedetail.jsp?c=패션의류&t=겉옷">겉옷</a></td>
 </tr>
 </table>
 </div>
