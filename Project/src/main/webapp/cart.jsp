@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>장바구니 담기</title>
+<%--<link href="testcss.css" rel="stylesheet">--%>
 </head>
 <body>
 <%@ page import ="java.sql.*" %>
@@ -32,7 +33,7 @@ else
 	}
 }
 %>
-<br>
+<br><br>
 <form action="<%=action%>">
 <input type="hidden" name="pid" value=<%=pid%>>
 <input type="submit" value="<%=val%>">
