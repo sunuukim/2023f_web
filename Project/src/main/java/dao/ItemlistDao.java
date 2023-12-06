@@ -97,8 +97,8 @@ public class ItemlistDao {
 		ResultSet rs = null;
 
 		try {
-			String selectq = "select name, price from item where pid=?";
-			String sql ="insert into cart(uid, pid, quantity, pname, price) values(?, ?, ?, ?, ?)";
+			String selectq = "select name, price, image from item where pid=?";
+			String sql ="insert into cart(uid, pid, quantity, pname, price, image) values(?, ?, ?, ?, ?, ?)";
 			conn = util.ConnectionPool.get();
 			stmts = conn.prepareStatement(selectq);
 			
@@ -112,6 +112,7 @@ public class ItemlistDao {
 				stmti.setInt(3, qu);
 				stmti.setString(4, rs.getString("name"));
 				stmti.setInt(5, rs.getInt("price"));
+				stmti.setString(6, rs.getString("image"));
 			}
 			else {
 				return false;
