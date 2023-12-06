@@ -4,14 +4,33 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<%
+String category = request.getParameter("c");
+String ifile = "";
+
+switch(category){
+case "식품":
+	ifile = "Foodmenu.jsp";
+	break;
+case "생활용품":
+	ifile = "Lifemenu.jsp";
+	break;
+case "패션의류":
+	ifile = "Clothesmenu.jsp";
+	break;
+case "레저스포츠":
+	ifile = "Sportsmenu.jsp";
+	break;
+}
+%>
 <title>제품정보</title>
-</head>
-<body>
 <%@ page import ="java.sql.*" %>
 <%@ page import ="util.ConnectionPool" %>
 <%@ page import = "dao.ItemlistDao" %>
-<%@ include file="Foodmenu.jsp" %>
-<div class="info">
+<jsp:include page="<%=ifile%>"/>
+</head>
+<body>
+<div class='info'>
 <%
 request.setCharacterEncoding("utf-8");
 String p = request.getParameter("pid");
