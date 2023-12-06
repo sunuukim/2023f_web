@@ -48,13 +48,22 @@ td[class='price']{
 	text-align:left;
 	padding-left:20px;
 	padding-top:5px;
-	background-color: lavender;
+	background-color: cornflowerblue;
+	color: white;
 	font-size:15pt;
 	font-weight:bold;
 }
+.mainbar{
+	background-color: cornflowerblue;
+	color:white;
+	font-weight: bold;
+}
+.mainbar td{
+	text-align: center;
+	padding:5px;
+}
 .menubar{
 	background-color:lavender;
-	font-weight: bold;
 }
 .menubar td{
 	text-align:center;
