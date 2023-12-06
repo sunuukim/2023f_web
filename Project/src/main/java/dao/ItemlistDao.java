@@ -11,18 +11,22 @@ public class ItemlistDao {
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "select pid, name, category, price, image from item where ";
+		String sql = "select pid, name, category, price, image from item";
+
 		try {
-			if(all==1) {
-				sql += "category=?";
-			}
-			else {
-				sql += "type=?";
-			}
 			conn = util.ConnectionPool.get();
-			stmt = conn.prepareStatement(sql);
-			
-			stmt.setString(1, t);
+			if(all!=2)
+			{
+				if(all==1) {
+					sql += " where category=?";
+				}
+				else{
+					sql += " where type=?";
+				}
+				stmt = conn.prepareStatement(sql);
+				stmt.setString(1, t);
+				
+			}else stmt = conn.prepareStatement(sql);
 			rs = stmt.executeQuery();
 			
 			String result = "<table align=center cellpadding=10 cellspacing=10>";
