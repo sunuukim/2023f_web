@@ -9,8 +9,7 @@ import javax.naming.NamingException;
 import util.ConnectionPool;
 
 public class SignDao {
-	private String spw;
-	public boolean insert(String uid, String upass, String uname, String udad, String utel) 
+	public boolean insert(String uid, String upass, String uname,String utel, String udad ) 
 			throws NamingException, SQLException{
 		Connection conn=null;
 		PreparedStatement stmt=null;
@@ -22,8 +21,8 @@ public class SignDao {
 			stmt.setString(1, uid);
 			stmt.setString(2, upass);
 			stmt.setString(3, uname);
-			stmt.setString(4, udad);
-			stmt.setString(5, utel);
+			stmt.setString(4, utel);
+			stmt.setString(5, udad);
 			
 			int count=stmt.executeUpdate();
 			return (count>0)? true:false;
@@ -32,17 +31,18 @@ public class SignDao {
 			if(conn!=null) conn.close();
 		}
 	}
-	public boolean exists(String uid) 
+	public boolean exists(String uid,String upw) 
 			throws NamingException, SQLException{
 		Connection conn=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
-			String sql="select id from user where id=?";
+			String sql="select id,pw from user where id=? and pw=?";
 			conn=ConnectionPool.get();
 			stmt=conn.prepareStatement(sql);
 			
 			stmt.setString(1, uid);
+			stmt.setString(2, upw);
 			rs=stmt.executeQuery();
 			return rs.next();
 		}finally {
@@ -51,21 +51,20 @@ public class SignDao {
 			if(conn!=null) conn.close();
 		}
 	}
-	public String select() 
+	public boolean select(String uid,String upw) 
 			throws NamingException, SQLException{
 		Connection conn=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
-			String sql="select * from user";
+			String sql="select id,pw from user values(?,?)";
 			conn=ConnectionPool.get();
 			stmt=conn.prepareStatement(sql);
-			rs = stmt.executeQuery(sql);
-			String spw="";
-			while(rs.next()) {
-				spw=rs.getString("pw");
-			}
-			return spw;
+			
+			stmt.setString(1, uid);
+			stmt.setString(2, upw);
+			rs = stmt.executeQuery();
+			return rs.next();
 		}finally {
 			if(rs!=null) rs.close();
 			if(stmt!=null) stmt.close();
