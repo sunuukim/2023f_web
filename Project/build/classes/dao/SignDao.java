@@ -31,18 +31,17 @@ public class SignDao {
 			if(conn!=null) conn.close();
 		}
 	}
-	public boolean exists(String uid,String upw) 
+	public boolean exists(String uid) 
 			throws NamingException, SQLException{
 		Connection conn=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
-			String sql="select id,pw from user where id=? and pw=?";
+			String sql="select id,pw from user where id=?";
 			conn=ConnectionPool.get();
 			stmt=conn.prepareStatement(sql);
 			
 			stmt.setString(1, uid);
-			stmt.setString(2, upw);
 			rs=stmt.executeQuery();
 			return rs.next();
 		}finally {
