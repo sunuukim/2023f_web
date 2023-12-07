@@ -36,7 +36,6 @@ public class ChdaddressDao {
 			stmt=conn.prepareStatement(sql);
 			
 			stmt.setString(1,dad);
-			
 			rs=stmt.executeQuery();
 			return rs.next();
 		}finally {
