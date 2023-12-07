@@ -20,7 +20,7 @@ LoginDao dao=new LoginDao();
 
 if(dao.exists(uid,upass)){
 	session.setAttribute("id",uid);
-	response.sendRedirect("mypage.jsp");
+	response.sendRedirect("mainpage.html");
 }
 else {
 	out.print("<a class=page-subhdr>");

@@ -28,7 +28,7 @@
 		</form>
 	</th></tr>
 	<tr><th>
-		<form method=post action="?.jsp">
+		<form method=post action="cart.jsp">
 			<input type=submit value="장바구니" class="page-menu">
 		</form>
 	</th></tr>
@@ -57,7 +57,7 @@
 		<td>
 			<%		
 			String isql="select pid,name,category,price,type,explanation,image from item";
-			String csql="select quntity,price from cart";
+			String csql="select quantity,price from cart";
 			Connection conn=ConnectionPool.get();
 			PreparedStatement istmt=conn.prepareStatement(isql);
 			PreparedStatement cstmt=conn.prepareStatement(csql);
@@ -78,7 +78,7 @@
 				else out.print("배송취소 ");
 				
 				out.print(date+"<br>"+"<img src=./img/apple.jpg height=300 width=300>"+"<br><br>");
-				str=str+"\t"+crs.getString("price")+" 원 · "+crs.getString("quntity")+" 개 "
+				str=str+"\t"+crs.getString("price")+" 원 · "+crs.getString("quantity")+" 개 "
 				+"\t\t\t\t"+"<input type=submit value='장바구니 담기' class='page-mainsub'>"
 				+"<br><br>";
 				out.print(str);
