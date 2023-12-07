@@ -6,7 +6,7 @@ import javax.naming.NamingException;
 import util.ConnectionPool;
 
 public class MyInfoDao {
-	public String select() 
+	public boolean select(String sid) 
 			throws NamingException, SQLException{
 		Connection conn=null;
 		PreparedStatement stmt=null;
@@ -17,10 +17,11 @@ public class MyInfoDao {
 			stmt=conn.prepareStatement(sql);
 			rs = stmt.executeQuery(sql);
 			String str="";
+			stmt.setString(1, sid);
 			while(rs.next()) {
-				str+=rs.getString("id");
+				str+=rs.getString("sid");
 			}
-			return str;
+			return rs.next();
 		}finally {
 			if(rs!=null) rs.close();
 			if(stmt!=null) stmt.close();
