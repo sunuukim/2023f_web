@@ -18,7 +18,7 @@ String utel=request.getParameter("tel");
 String udad=request.getParameter("dad");
 
 SignDao dao=new SignDao();
-if(dao.exists(uid,upass)){
+if(dao.exists(uid)){
 	out.print("<a class=page-hdr>");
 	out.print("존재하는 아이디 입니다."+"</a>"+"<br><br><br><br><hr>");
 	out.print("<form method=post action=signup.html>");
