@@ -18,7 +18,7 @@ case "생활용품":
 case "패션의류":
 	ifile = "Clothesmenu.jsp";
 	break;
-case "레저스포츠":
+case "스포츠레저":
 	ifile = "Sportsmenu.jsp";
 	break;
 }
