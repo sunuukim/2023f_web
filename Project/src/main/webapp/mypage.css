@@ -36,6 +36,9 @@ body{
 }
 .page-mainsub{
 	float: right;
+	width: 150px;
+	height: 80px;
+	font-size: 1.1em;
 }
 
 .page-menu{

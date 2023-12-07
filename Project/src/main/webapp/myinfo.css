@@ -4,9 +4,6 @@ body{
 	height: 100%;
 	background-color: floralwhite;
 	font-family: 'Malgun Gothic','Arial';
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .page-hdr{

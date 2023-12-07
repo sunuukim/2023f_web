@@ -17,8 +17,7 @@
 <div class="page-hdr">마이 페이지</div><br><br><br><br><hr>
 
 <form method=post action=logout.jsp>
-<div class="page-lgout"><input type=submit value="로그아웃">
-</div>
+<a><input type=submit class="page-lgout" value="로그아웃"></a>
 </form>
 
 <div class="page-bt">
@@ -57,32 +56,36 @@
 	<tr>
 		<td>
 			<%		
-			String sql="select pid,name,price,quntity,explanation,sdate,ddate,delivery,category,type from item";
-		
+			String isql="select pid,name,category,price,type,explanation,image from item";
+			String csql="select quntity,price from cart";
 			Connection conn=ConnectionPool.get();
-			PreparedStatement stmt=conn.prepareStatement(sql);
-			ResultSet rs=stmt.executeQuery();
+			PreparedStatement istmt=conn.prepareStatement(isql);
+			PreparedStatement cstmt=conn.prepareStatement(csql);
+			ResultSet irs=istmt.executeQuery();
+			ResultSet crs=cstmt.executeQuery();
 		
 			Date now=new Date(); 
 			SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
 			String date=df.format(now);
 		
-			while(rs.next()){
+			while(crs.next()){
 				String str="";
-				int del=rs.getInt("delivery");
-	
+				String simg="";
+				//int del=rs.getInt("delivery");
+				int del=1;
 				if(del==0) out.print("배송 중 ");
 				else if(del==1) out.print("배송완료 ");
 				else out.print("배송취소 ");
-	
-				out.print(date+"<br>"+"<img src=C:/Users/Towa/Desktop/웹프로그래밍/사과.jpg height=300 width=300><br><br>");
-				str=str+"\t"+rs.getString("price")+" 원·"+rs.getString("quntity")+" 개 "
+				
+				out.print(date+"<br>"+"<img src=./img/apple.jpg height=300 width=300>"+"<br><br>");
+				str=str+"\t"+crs.getString("price")+" 원 · "+crs.getString("quntity")+" 개 "
 				+"\t\t\t\t"+"<input type=submit value='장바구니 담기' class='page-mainsub'>"
 				+"<br><br>";
 				out.print(str);
 			}
 			conn.close();
-			stmt.close();
+			istmt.close();
+			cstmt.close();
 			%>
 	</td>
 </tr>

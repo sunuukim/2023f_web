@@ -12,12 +12,12 @@
 <title>Delete My Info</title>
 </head>
 <body>
-<a class="page-hdr">회원탈퇴 페이지</a><br><br><br><br><br><hr>
+<a class="page-hdr">회원탈퇴 페이지</a><br><br><br><hr>
 <%
 String sid=(String) session.getAttribute("id");
 %>
 <table class="page-main">
-	<tr class="page-name">
+	<tr class=page-line>
 		<td>
 			ID : 
 		</td>
@@ -25,12 +25,14 @@ String sid=(String) session.getAttribute("id");
 			<%=sid	%>
 		</td>
 	</tr>
-	<tr class="page-name">
+	<tr class=page-line>
 		<td>	
 			PW :
 		</td>
 		<td>
+			<form method="post" action="withdrawck.jsp">	
 			<input type="password" name="pw" class="page-bton" required>
+			
 		</td>
 	</tr>
 </table> 
@@ -39,7 +41,7 @@ String sid=(String) session.getAttribute("id");
 <table class="page-main">
 	<tr>
 		<td>
-		<form method="post" action="withdrawck.jsp">
+		
 			<input type="submit" value="회원 탈퇴" class="page-tmenu"> 
 		</form>
 		</td>

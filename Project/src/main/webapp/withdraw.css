@@ -38,15 +38,7 @@ body{
 	text-align: center;
 }
 
-.page-bton1{
-	width: 360px;
-	height: 40px;
+.page-line{
 	font-size: 35px;
-	text-align: center;
-}
-
-.page-name{
-	font-size: 35px;
-	width: 350px;
-	height: 40px;
+	border: 1px solid;
 }

@@ -17,7 +17,7 @@ String sid=(String) session.getAttribute("id");
 
 MyInfoDao dao=new MyInfoDao();
 
-String spw=dao.select();
+String sname=dao.select();
 %>
 <table class=page-main>
 	<tr>
@@ -31,6 +31,22 @@ String spw=dao.select();
 	<tr>
 		<td>
 			이름 : 
+		</td>
+		<td>
+			<%out.print(" "); %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			주소 : 
+		</td>
+		<td>
+			<%out.print(" "); %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			전화번호 : 
 		</td>
 		<td>
 			<%out.print(" "); %>

@@ -19,6 +19,17 @@ body{
 	color:black;
 }
 
+.page-subhdr{
+	z-index: 8;
+	position: fixed;
+	width: 100%;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	font-size: 2.1em;
+	font-weight: bold;
+}
+
 .page-main{
 	display: table;
 	margin-left: auto;

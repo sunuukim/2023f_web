@@ -19,11 +19,10 @@ String upw=request.getParameter("pw");
 
 SignDao dao=new SignDao();
 
-if(upw.equals(dao.select())){
-	if(dao.delete(sid))
-		out.print("회원 탈퇴 완료");
-}else out.print("회원이 존재하지 않습니다.");
-
+if(dao.exists(sid, upw)){
+	dao.delete(sid);
+	response.sendRedirect("login.html");
+}else out.print("패스워드가 동일하지 않습니다.");
 %>
 </a><br><br><br><br><br><hr><br>
 <form method=post action=withdraw.jsp>

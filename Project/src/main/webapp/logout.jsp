@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>LogOut</title>
 </head>
 <body>
 <hr>
-<%session.invalidate();%>
-로그아웃 되셨습니다.
+<%session.invalidate();
+response.sendRedirect("login.html");
+%>
 <hr>
 <form method=post action="login.html">
 <input type=submit value="로그인 창으로">

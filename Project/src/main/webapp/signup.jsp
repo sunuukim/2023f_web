@@ -18,9 +18,9 @@ String utel=request.getParameter("tel");
 String udad=request.getParameter("dad");
 
 SignDao dao=new SignDao();
-if(dao.exists(uid)){
+if(dao.exists(uid,upass)){
 	out.print("<a class=page-hdr>");
-	out.print("이미 가입한 회원입니다."+"</a>"+"<br><br><br><br><hr>");
+	out.print("존재하는 아이디 입니다."+"</a>"+"<br><br><br><br><hr>");
 	out.print("<form method=post action=signup.html>");
 	out.print("<input type=submit class=page-tmenu value=돌아가기>"+"</form>");
 	return;
@@ -28,6 +28,9 @@ if(dao.exists(uid)){
 	out.print("패스워드가 동일하지 않습니다.");
 	out.print("<form method=post action=signup.html>"+"<hr>"+
 	"<input type=submit class=page-tmenu value=돌아가기>"+"</form>");
+}else{
+	dao.insert(uid,upass,uname,utel,udad);
+	response.sendRedirect("login.html");
 }
 
 %>
