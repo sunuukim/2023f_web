@@ -12,7 +12,7 @@ public class MyInfoDao {
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
-			String sql="select * from user";
+			String sql="select * from user where id=?";
 			conn=ConnectionPool.get();
 			stmt=conn.prepareStatement(sql);
 			rs = stmt.executeQuery(sql);
