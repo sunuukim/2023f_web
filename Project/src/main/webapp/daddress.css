@@ -1,49 +1,14 @@
 @charset "UTF-8";
 
-body{
-	background-color: floralwhite;
-	font-family: 'Malgun Gothic','Arial';
+.box{
+	width: 394px;
+	height: 50px;
+	font-size: 20px;
 }
 
-.page-hdr{
-	z-index: 8;
-	position: fixed;
-	width: 100%;
-	height: 100px;
-	line-height: 80px;
-	text-align: center;
-	font-size: 3.3em;
-	font-weight: bold;
-	background-color: floralwhite;
-	color:black;
-}
-
-.page-er{
-	font-size: 2.1em;
-}
-
-.page-main{
-	font-size: 35px;
-	text-align: right;
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.page-tcen{
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.page-tmenu{
-	width: 170px;
-	height: 80px;
-	font-size: 1.1em;
-}
-
-.page-add{
-	width: 550px;
-	height: 90px;
-	font-size: 35px;
+.ckbox{
+	width: 400px;
+	height: 50px;
+	font-size: 20px;
+	margin-top: 20px;
 }

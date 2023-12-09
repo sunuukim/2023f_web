@@ -1,37 +1,35 @@
 @charset "UTF-8";
 
-body{
-	height: 100%;
-	background-color: floralwhite;
-	font-family: 'Malgun Gothic','Arial';
+.left-side{
+	text-align: left;
+	background-color: #dadad9;
+	width: 273px;
+	font-family: Arial, sans-serif;
+	font-size: 25px;
 }
 
-.page-hdr{
-	z-index: 8;
-	position: fixed;
-	width: 100%;
-	height: 50px;
-	line-height: 80px;
-	text-align: center;
-	font-size: 3.3em;
-	font-weight: bold;
-	background-color: floralwhite;
-	color:black;
+.bor{
+	border: 1px solid;
 }
 
-.page-main{
+.right-side{
 	text-align: right;
-	font-size: 35px;
+	font-size: 25px;
+	width: 120px;
+	height: 25px;
+	background-color: #dadad9;
+	font-family: Arial, sans-serif;
 }
 
-.page-tmenu{
-	width: 150px;
-	height: 80px;
-	font-size: 1.1em;
+.passbox{
+	width: 392px;
+	height: 50px;
+	font-size: 20px;
 }
 
-.page-name{
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
+.ckbox{
+	width: 400px;
+	height: 50px;
+	font-size: 20px;
+	margin-top: 20px;
 }

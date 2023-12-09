@@ -7,62 +7,85 @@
 <html>
 <head>
 <link rel="stylesheet" href="myinfo.css">
+<link rel="stylesheet" href="core.css">
 <meta charset="UTF-8">
 <title>My Information</title>
 </head>
 <body>
-<a class=page-hdr>내 정보 확인</a><br><br><br><br><hr>
 <%
 String sid=(String) session.getAttribute("id");
-
 MyInfoDao dao=new MyInfoDao();
-
-String sname=dao.select();
 %>
-<table class=page-main>
+
+<div class="right-corner">
+<a href="login.html">로그인</a>
+<a href="signup.html">회원가입</a>
+</div><br>
+
+<form method="post" action="mainpage.html">
+	<input type="submit" value="ShoppingMall" class="headerbt"></form>
+
+<div class=nav>
+<a href="category.jsp?c=식품">식품</a>
+<a href="category.jsp?c=생활용품">생활용품</a>
+<a href="category.jsp?c=패션의류">패션의류</a>
+<a href="category.jsp?c=스포츠레저">스포츠레저</a>
+<a href="mypage.jsp">마이페이지</a>
+<a href="cart.jsp">장바구니</a>
+</div>
+
+<h2 class=header>내 정보 확인</h2>
+
+<div class=section>
+<table class=bor>
 	<tr>
-		<td>
+		<td class=right-side>
 			아이디 : 
 		</td>
-		<td>
+		<td class=left-side>
 			<%out.print(" "+sid);%>
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td class=right-side>
 			이름 : 
 		</td>
-		<td>
+		<td class=left-side>
 			<%out.print(" "); %>
 		</td>
 	</tr>
 	<tr>
-		<td>
-			주소 : 
+		<td class=right-side>
+			배송지 : 
 		</td>
-		<td>
+		<td class=left-side>
 			<%out.print(" "); %>
 		</td>
 	</tr>
 	<tr>
-		<td>
+		<td class=right-side>
 			전화번호 : 
 		</td>
-		<td>
+		<td class=left-side>
 			<%out.print(" "); %>
 		</td>
 	</tr>
 </table>
-<hr>
-<form method=post action=mypage.jsp>
-<table class=page-name>
-<tr>
-<td>
-<input type=submit value=돌아가기 class=page-tmenu>
-</td>
-</tr>
-</table>
+</div>
 
-</form>
+<div class=section>
+<table>
+	<tr>
+		<td colspan=2>
+			<form method=post action=mypage.jsp>
+			<input type=submit value=돌아가기 class=ckbox></form>		
+		</td>
+	</tr>
+</table>
+</div>
+
+<div class=footer>
+<p>&Korea.uni.ShoppingMall</p>
+</div>
 </body>
 </html>

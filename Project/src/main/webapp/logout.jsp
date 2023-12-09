@@ -9,7 +9,7 @@
 <body>
 <hr>
 <%session.invalidate();
-response.sendRedirect("login.html");
+response.sendRedirect("mainpage.html");
 %>
 <hr>
 <form method=post action="login.html">

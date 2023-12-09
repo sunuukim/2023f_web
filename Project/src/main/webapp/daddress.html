@@ -2,32 +2,49 @@
 <html>
 <head>
 	<link rel="stylesheet" href="daddress.css">
+	<link rel="stylesheet" href="core.css">
 <meta charset="UTF-8">
 <title>Delivery Address Change</title>
 </head>
 <body>
-<a class="page-hdr">배송지 변경</a>
-<br><br><br><br><br><hr>
+<div class="right-corner">
+<a href="login.html">로그인</a>
+<a href="signup.html">회원가입</a>
+</div><br>
+
+<form method="post" action="mainpage.html">
+	<input type="submit" value="ShoppingMall" class="headerbt"></form>
+
+
+<div class=nav>
+<a href="category.jsp?c=식품">식품</a>
+<a href="category.jsp?c=생활용품">생활용품</a>
+<a href="category.jsp?c=패션의류">패션의류</a>
+<a href="category.jsp?c=스포츠레저">스포츠레저</a>
+<a href="mypage.jsp">마이페이지</a>
+<a href="cart.jsp">장바구니</a>
+</div>
+
+<h1 class="header">배송지 변경</h1>
+
+<div class="section">
 <form method="post" action="daddress.jsp">
-	<table class="page-main">
-		<tr>
-			<td>변경할 배송지 : </td>
-			<td><textarea class="page-add" name=chdad></textarea></td>
-		</tr>
-	</table>
-	<hr>
-	<table class="page-tcen">
+	<table>
 		<tr>
 			<td>
-				<input type="submit" value="배송지 변경" class="page-tmenu"></form>
+				<input type="text" placeholder="변경 할 배송지" class="box" name=chdad>
 			</td>
+		</tr>
+		<tr>
 			<td>
-				<form method="post" action="mypage.jsp">
-					<input type="submit" value="돌아가기" class="page-tmenu">
+				<input type="submit" class="ckbox" value="배송지 변경"></form>
 			</td>
 		</tr>
 	</table>
-	
-</form>
+</div>
+
+<div class="footer">
+	<p>&Korea.uni.ShoppingMall</p> 
+</div>
 </body>
 </html>

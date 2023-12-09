@@ -1,42 +1,23 @@
 @charset "UTF-8";
 
-body{
-	height: 100%;
-	background-color: floralwhite;
-	font-family: 'Malgun Gothic','Arial';
+.mainheader{
+	background-color: #333;
+    padding: 1em;
+    text-align: center;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
 }
 
-.page-hdr{
-	z-index: 8;
-	position: fixed;
-	width: 100%;
-	height: 100px;
-	line-height: 100px;
-	text-align: center;
-	font-size: 3.3em;
-	font-weight: bold;
-	background-color: floralwhite;
-	color:black;
+.passbox{
+	width: 392px;
+	height: 50px;
+	font-size: 20px;
 }
 
-.page-main{
-	text-align: center;
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.page-tmenu{
-	width: 170px;
-	height: 80px;
-	font-size: 1.1em;
-	display: table;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.page-add{
-	width: 250px;
-	height: 40px;
-	font-size: 35px;
+.ckbox{
+	width: 400px;
+	height: 50px;
+	font-size: 20px;
+	margin-top: 20px;
 }

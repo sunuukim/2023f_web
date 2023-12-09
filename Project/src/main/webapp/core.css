@@ -1,76 +1,68 @@
 @charset "UTF-8";
 
+.body{
+	font-family: Arial, sans-serif;
+    background-color: #FFFFEE;
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+	background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.headerbt{
+	background-color: #333;
+	color: white;
+    width: 100%;
+    height: 80px;
+    font-size: 32px;
+    border: 0px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+
+.subheader{
+	background-color: #717171;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.nav{
+	display: flex;
+	justify-content: space-around;
+	background-color: #444;
+	padding: 1em 0;
+	margin-top: 5px;
+}
+
+.nav a{
+	color: white;
+    text-decoration: none;
+}
+
 .section{
-	float:left;
-	width:100%;
-	box-sizing:border-box;
+	padding: 2em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-body{
-	height: 100%;
-	margin: 0px;
-	padding: 0px;
-	background-color: floralwhite;
-	font-size: 30px;
-	font-family: 'Malgun Gothic','Arial';
+.footer{
+	background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
 }
-
-.page-hdr{
-	z-index: 10;
-	position: fixed;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100px;
-	line-height: 100px;
-	text-align: center;
-	font-size: 3.1em;
-	font-weight: bold;
-	background-color: floralwhite;
-	color:black;
-}
-
-.page-body{
-	text-align: center;
-	width: 268px;
-	height: 60px;
-	line-height: 30px;
-}
-
-.page-txr{
-	text-align: right;
-}
-
-.page-txl{
-	text-align: left;
-}
-
-.page-cnt{
-	text-align: center;
-	font-weight: bold;
-	font-size: 1.1em;
-}
-
-.page-mycnt{
-	text-align: center;
-	font-weight: bold;
-	font-size: 1.3em;
-}
-
-.page-body input{
-	float: left;
-	width: 100%;
-	padding: 0 16px;
-	box-sizing: border-box;
-	line-height: 46px;
-	font-size: 1.0em;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	outline: none;
-}
-
-.page-body input[type=submit]{
-	background-color: #F0F;
-	color: #d44010;
-	border: 1px solid #d33010;
+    
+.right-corner{
+	float: right;
 }

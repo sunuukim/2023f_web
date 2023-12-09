@@ -2,52 +2,70 @@
 <html>
 <head>
 	<link rel="stylesheet" href="signup.css">
+	<link rel="stylesheet" href="core.css">
 <meta charset="UTF-8">
 <title>SignUp</title>
 </head>
 <body>
-<a class="page-hdr">회원 가입 페이지</a><br><br><br><br><hr>
-<p class="page-cen">회원 정보를 입력해주세요</p><hr>
+<div class="right-corner">
+<a href="login.html">로그인</a>
+<a href="signup.html">회원가입</a>
+</div><br>
 
+<form method="post" action="mainpage.html">
+	<input type="submit" value="ShoppingMall" class="headerbt"></form>
+
+
+<div class=nav>
+<a href="category.jsp?c=식품">식품</a>
+<a href="category.jsp?c=생활용품">생활용품</a>
+<a href="category.jsp?c=패션의류">패션의류</a>
+<a href="category.jsp?c=스포츠레저">스포츠레저</a>
+<a href="mypage.jsp">마이페이지</a>
+<a href="cart.jsp">장바구니</a>
+</div>
+
+<div class="header">
+<h2>회원 가입 페이지</h2>
+<h3 class="exheader">회원 정보를 입력해주세요</h3>
+</div>
+
+<div class="section">
 <form method="post" action="signup.jsp" >
-	<table class="page-tcen">
+	<table>
 		<tr>
-			<td class="page-rgt">아이디 : </td>
-			<td><input type=text class="page-bton" name=id placeholder="Email address" required></td>
+			<td colspan="2"><input type=text class="box" name=id placeholder="ID" required></td>
 		</tr>
 		<tr>
-			<td class="page-rgt">패스워드 : </td> 
-			<td><input type=password class="page-bton" name=pw required></td>
+			<td colspan="2"><input type=password class="box" placeholder="Password" name=pw required></td>
 		</tr>
 		<tr>
-			<td class="page-rgt">패스워드(확인) : </td> 
-			<td><input type=password class="page-bton" name=rpw required></td>
+			<td colspan="2"><input type=password class="box" placeholder="Password(Check)" name=rpw required></td>
 		</tr>
 		<tr>
-			<td class="page-rgt">이름 : </td> 
-			<td><input type=text class="page-bton" name=na required></td>
+			<td colspan="2"><input type=text class="box" placeholder="Name" name=na required></td>
 		</tr>
 		<tr>
-			<td class="page-rgt">전화번호 : </td> 
-			<td><input type=text class="page-bton" name=tel placeholder="010-0000-0000" required></td>
+			<td colspan="2"><input type=text class="box" placeholder="TelePhone Number" name=tel placeholder="010-0000-0000" required></td colspan="2">
 		</tr>
 		<tr>
-			<td class="page-rgt">배송지 : </td>
-			<td><textarea class="page-btons" name=dad required></textarea></td>
+			<td colspan="2"><input type="text" class="box" placeholder="Address" name=dad required></td>
 		</tr>
-	</table>
-	<hr>
-	<table class="page-tcen">
 		<tr>
 			<td>
-				<input type="submit" value="회원 가입" class="page-tmenu"></form>
+				<input type="submit" value="회원 가입" class="ckbox"></form>
 			</td>
 			<td>
 				<form method="post" action="login.html">
-					<input type="submit" value="로그인창으로" class="page-tmenu">
+					<input type="submit" value="로그인창으로" class="ckbox">
 				</form>
 			</td>
 		</tr>
 	</table>
+</div>
+
+<div class="footer">
+	<p>&Korea.uni.ShoppingMall</p> 
+</div>
 </body>
 </html>
