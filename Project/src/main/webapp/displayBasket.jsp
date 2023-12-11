@@ -9,16 +9,18 @@
 <head>
     <meta charset="UTF-8">
     <title>장바구니</title>
-
+   <link rel="stylesheet" type="text/css" href="designbasket.css">
+   
 </head>
 <body>
+   <h1>ShoppingMall</h1>
+   
     <h2>장바구니</h2>
 
     <form action="removeItem.jsp" method="post">
         <table border="1">
             <thead>
                 <tr>
-                    <th>상품 ID</th>
                     <th>이미지</th>
                     <th>이름</th>
                     <th>수량</th>
@@ -28,20 +30,29 @@
             </thead>
             <tbody>
                 <% 
+                String uid = (String)session.getAttribute("id");
                 BasketDao basketDao = new BasketDao();
-                ArrayList<BasketDao.BasketItem> basketItems = basketDao.getBasketItems();
+                ArrayList<BasketDao.BasketItem> basketItems = basketDao.getBasketItems(uid);
                 for (BasketDao.BasketItem basketItem : basketItems) { 
                 %>
                     <tr>
-                        <td><%= basketItem.getPid() %></td>
-                        <td><img src="<%= basketItem.getImage() %>" alt="<%= basketItem.getName() %>"></td>
+                        <td><img width=200 src="image/<%= basketItem.getImage() %>" alt="<%= basketItem.getName() %>"></td>
                         <td><%= basketItem.getName() %></td>
-                        <td><%= basketItem.getQuantity() %></td>
+                       
+                        <td>
+                         <select name="quantity" id="quantity_<%= basketItem.getPid() %>" onchange="updateQuantity('<%= session.getAttribute("id") %>', '<%= basketItem.getPid() %>', '<%= basketItem.getQuantity() %>', '<%= basketItem.getPid() %>')">
+                         <% for (int i = 1; i <= 10; i++) { %>
+                             <option value="<%= i %>" <%= i == basketItem.getQuantity() ? "selected" : "" %>><%= i %></option>
+                         <% } %>
+                     </select>
+
+                     </td>
                         <td><%= basketItem.getPrice() %></td>
                         <td><input type="checkbox" name="selectedItems" value="<%= basketItem.getPid() %>"></td>
                     </tr>
                 <% } %>
             </tbody>
+            
         </table>
 
         <input type="submit" value="선택 삭제">
@@ -52,25 +63,32 @@
     </form>
 
     <br>
-    <form action="cart.jsp" method="get">
+    <form action="mainpage.html" method="get">
         <input type="submit" value="쇼핑 계속하기">
     </form>
     
     <% 
-    String uid = (String)session.getAttribute("id");
-    if (uid == null) { 
-    %>
-        <p>로그인이 필요한 서비스입니다.</p>
-        <form action="login.html">
-            <input type="submit" value="로그인">
-        </form>
-    <% } else { %>
-        <!-- <p>총 금액: <%= ServicebasketDao.calculateTotalPrice(Integer.parseInt(uid)) %></p> -->
-        <form action="checkout.jsp" method="post">
-            <!-- 결제 페이지로 이동 -->
-            <input type="submit" value="결제하기">
-        </form>
-    <% } %>
+   
+   if (uid == null) { 
+   %>
+       <p>로그인이 필요한 서비스입니다.</p>
+       <form action="login.html">
+           <input type="submit" value="로그인">
+       </form>
+   <% } else { %>
+       <!-- JavaScript 코드 불러오기 -->
+       <p>상품 수량이 변경되었습니다.</p>
+       <script src="path/to/updateQuantity.jsp"></script>
 
+    <%
+        ServicebasketDao servicebasketDao = new ServicebasketDao();
+        int totalPrice = servicebasketDao.calculateTotalPrice(uid);
+    %>
+    <p style="color: black;">총 금액: <%= totalPrice %></p>
+    <form action="checkout.jsp" method="post">
+        <!-- 결제 페이지로 이동 -->
+        <input type="submit" value="결제하기">
+    </form>
+<% } %>
 </body>
 </html>
