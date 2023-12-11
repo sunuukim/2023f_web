@@ -8,20 +8,19 @@ import javax.naming.NamingException;
 import util.ConnectionPool;
 
 public class ServicebasketDao {
-	private static final String INSERT_BASKET_ITEM_QUERY="INSERT INTO basket (uid, pid, image, name, quantity, price) VALUES (?,?,?,?,?,?)";
-	private static final String DELETE_ALL_ITEMS_FROM_BASKET_QUERY="DELETE FROM basket WHERE uid=?";
-	private static final String SELECT_DELETE_ITEMS_FROM_BASKET_QUERY="DELETE FROM basket WHERE uid=? AND pid=?";
-	private static final String CALCULATE_ITEMS_PRICE_QUERY="SELECT quantity, price FROM basket WHERE uid=?";
-	private static final String UPDATE_ITEM_QUANTITY_QUERY="UPDATE basket SET quantity=? WHERE uid=? AND pid=?";
-	
+	private static final String DELETE_ALL_ITEMS_FROM_CART_QUERY="DELETE FROM cart WHERE uid=?";
+	private static final String SELECT_DELETE_ITEMS_FROM_CART_QUERY="DELETE FROM cart WHERE uid=? AND pid=?";
+	private static final String CALCULATE_ITEMS_PRICE_QUERY = "SELECT quantity, price FROM cart WHERE uid=?";
+	private static final String UPDATE_ITEM_QUANTITY_QUERY = "UPDATE cart SET quantity=? WHERE uid=? AND pid=?";
+
 	
 	//선택상품 삭제
-	public boolean deleteItem(int uid, int pid)
+	public boolean deleteItem(String uid, int pid)
 	{
 		try(Connection conn=ConnectionPool.get();
-			PreparedStatement stmt=conn.prepareStatement(SELECT_DELETE_ITEMS_FROM_BASKET_QUERY))
+			PreparedStatement stmt=conn.prepareStatement(SELECT_DELETE_ITEMS_FROM_CART_QUERY))
 		{
-			stmt.setInt(1, uid);
+			stmt.setString(1, uid);
 			stmt.setInt(2, pid);
 			
 			int rowsAffected=stmt.executeUpdate();
@@ -35,12 +34,12 @@ public class ServicebasketDao {
 	}
 	
 	//전체상품 삭제
-	public boolean deleteALLitems(int uid)
+	public boolean deleteALLitems(String uid)
 	{
 		try(Connection conn=ConnectionPool.get();
-			PreparedStatement stmt=conn.prepareStatement(DELETE_ALL_ITEMS_FROM_BASKET_QUERY))
+			PreparedStatement stmt=conn.prepareStatement(DELETE_ALL_ITEMS_FROM_CART_QUERY))
 		{
-			stmt.setInt(1, uid);
+			stmt.setString(1, uid);
 			
 			int rowsAffected=stmt.executeUpdate();
 			return rowsAffected>0;
@@ -54,50 +53,44 @@ public class ServicebasketDao {
 	}
 	
 	//상품 총 금액 계산
-	public double calculateTotalPrice(int uid)
+	public int calculateTotalPrice(String uid)
 	{
-		double totalPrice=0.0;
+		int totalPrice=0;
 		
-		try(Connection conn=ConnectionPool.get();
-			PreparedStatement stmt=conn.prepareStatement("CALCULATE_ITEMS_PRICE_QUERY"))
-		{
-			stmt.setInt(1, uid);
-			
-			try(ResultSet rs=stmt.executeQuery())
-			{
-				while(rs.next())
-				{
-					int quantity=rs.getInt("quantity");
-					double price=rs.getDouble("price");
-					
-					totalPrice+=quantity*price;
-				}
-			}
+		try (Connection conn = ConnectionPool.get();
+		        PreparedStatement stmt = conn.prepareStatement(CALCULATE_ITEMS_PRICE_QUERY)) {
+		    stmt.setString(1, uid);
+
+		    try (ResultSet rs = stmt.executeQuery()) {
+		        while (rs.next()) {
+		            int quantity = rs.getInt("quantity");
+		            int price = rs.getInt("price");
+
+		            totalPrice += quantity * price;
+		        }
+		    }
+		} catch (SQLException | NamingException e) {
+		    e.printStackTrace();
 		}
-		catch(SQLException|NamingException e)
-		{
-			e.printStackTrace();
-		}
+
 		return totalPrice;
 	}
 	
 	//상품 수량을 업데이트
-	public boolean updateQuantity(int uid, int pid, int quentity)
+	public boolean updateQuantity(String uid, int pid, int quantity)
 	{
-		try(Connection conn=util.ConnectionPool.get();
-			PreparedStatement stmt=conn.prepareStatement("UPDATE_ITEM_QUANTITY_QUERY"))
-		{
-			stmt.setInt(1, quentity);
-			stmt.setInt(2, uid);
-			stmt.setInt(3, pid);
-			
-			int rowAffected=stmt.executeUpdate();
-			return rowAffected>0;
+		try (Connection conn = util.ConnectionPool.get();
+		        PreparedStatement stmt = conn.prepareStatement(UPDATE_ITEM_QUANTITY_QUERY)) {
+		    stmt.setInt(1, quantity);
+		    stmt.setString(2, uid);
+		    stmt.setInt(3, pid);
+
+		    int rowAffected = stmt.executeUpdate();
+		    return rowAffected > 0;
+		} catch (SQLException | NamingException e) {
+		    e.printStackTrace();
 		}
-		catch(SQLException|NamingException e)
-		{
-			e.printStackTrace();
-		}
+
 		return false;
 	}
 }

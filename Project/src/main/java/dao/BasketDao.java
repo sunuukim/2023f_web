@@ -1,5 +1,3 @@
-//아직 오류 검증 안함
-//장바구니 데이터베이스의 정보들을 리스트로 변환할 예정
 package dao;
 
 import java.sql.*;
@@ -10,26 +8,29 @@ import java.sql.Connection;
 import javax.naming.NamingException;
 
 public class BasketDao {
-	private static final String SELECT_BASKET_ITEMS_QUERY="SELECT pid,image, name, quantity, price FROM uid WHERE validity=1";
-	
-	public ArrayList<BasketItem> getBasketItems() {
+    private static final String SELECT_BASKET_ITEMS_QUERY = "SELECT pid, image, pname, quantity, price FROM cart WHERE uid=?";
+
+    public ArrayList<BasketItem> getBasketItems(String uid) {
         ArrayList<BasketItem> basketItemList = new ArrayList<>();
 
         try (Connection conn = util.ConnectionPool.get();
-             PreparedStatement stmt = conn.prepareStatement(SELECT_BASKET_ITEMS_QUERY);
-             ResultSet rs = stmt.executeQuery()) {
+             PreparedStatement stmt = conn.prepareStatement(SELECT_BASKET_ITEMS_QUERY)) {
 
-            while (rs.next()) {
-            	int pid=rs.getInt("pid");
-            	String image = rs.getString("image");
-                String name = rs.getString("name");
-                int quantity = rs.getInt("quantity");
-                double price = rs.getDouble("price");
+            stmt.setString(1, uid);
 
-                // BasketItem 객체를 생성하여 ArrayList에 추가
-                BasketItem basketItem = new BasketItem(pid, image, name, quantity, price); 
-                basketItemList.add(basketItem);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    int pid = rs.getInt("pid");
+                    String image = rs.getString("image");
+                    String pname = rs.getString("pname");
+                    int quantity = rs.getInt("quantity");
+                    int price = rs.getInt("price");
+
+                    BasketItem basketItem = new BasketItem(pid, image, pname, quantity, price);
+                    basketItemList.add(basketItem);
+                }
             }
+
         } catch (SQLException | NamingException e) {
             e.printStackTrace(); // 오류 처리
         }
@@ -37,67 +38,65 @@ public class BasketDao {
         return basketItemList;
     }
 
+    public int calculateTotalPrice(String uid) {
+        ServicebasketDao servicebasketDao = new ServicebasketDao();
+        return servicebasketDao.calculateTotalPrice(uid);
+    }
+
     // BasketItem 클래스 정의
     public class BasketItem {
-    	private int pid;
-    	private String image;
-        private String name;
+        private int pid;
+        private String image;
+        private String pname;
         private int quantity;
-        private double price;
+        private int price;
 
-        public BasketItem(int pid, String image, String name, int quantity, double price) {
-            this.pid=pid;
-        	this.image=image;
-        	this.name = name;
+        public BasketItem(int pid, String image, String pname, int quantity, int price) {
+            this.pid = pid;
+            this.image = image;
+            this.pname = pname;
             this.quantity = quantity;
             this.price = price;
         }
-        
-        public int getPid()
-        {
-        	return pid;
+
+        public int getPid() {
+            return pid;
         }
-        public void setPid(int pid)
-        {
-        	this.pid=pid;
+
+        public void setPid(int pid) {
+            this.pid = pid;
         }
-        public String getImage()
-        {
-        	return image;
+
+        public String getImage() {
+            return image;
         }
-        public void setImage(String image)
-        {
-        	this.image=image;
+
+        public void setImage(String image) {
+            this.image = image;
         }
-    	public String getName()
-    	{
-    		return name;
-    	}
-    	public void setName(String name)
-    	{
-    		this.name=name;
-    	}
-    	public int getQuantity()
-    	{
-    		return quantity;
-    	}
-    	public void setQuantity(int quantity)
-    	{
-    		this.quantity=quantity;
-    	}
-    	public double getPrice()
-    	{
-    		return price;
-    	}
-    	public void setPrice(double price)
-    	{
-    		this.price=price;
-    	}
-    }
-    
-    public double calculateTotalPrice(int uid)
-    {
-    	ServicebasketDao servicebasketDao=new ServicebasketDao();
-    	return servicebasketDao.calculateTotalPrice(uid);
+
+        public String getName() {
+            return pname;
+        }
+
+        public void setName(String pname) {
+            this.pname = pname;
+        }
+
+        public int getQuantity() {
+            return quantity;
+        }
+
+        public void setQuantity(int quantity) {
+            this.quantity = quantity;
+        }
+
+        public int getPrice() {
+            return price;
+        }
+
+        public void setPrice(int price) {
+            this.price = price;
+        }
     }
 }
