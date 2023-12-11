@@ -1,11 +1,66 @@
 @charset "UTF-8";
 
-a{
+body {
+	font-family: Arial, sans-serif;
+	background-color: #FFFFFF;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	background-color: #333;
+	color: white;
+	padding: 1em;
+	text-align: center;
+}
+
+header a {
+	background-color: #333;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+nav {
+	display: flex;
+	justify-content: space-around;
+	background-color: #444;
+	padding: 1em 0;
+	margin-top: 1em;
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+}
+
+section {
+	padding: 2em;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+footer {
+	background-color: #333;
+	color: white;
+	padding: 1em;
+	text-align: center;
+}
+
+.right-corner {
+	float: right;
+}
+
+a {
 	color: black;
-	text-decoration-line:none;
+	text-decoration-line: none;
 }
 
 input[type='submit'] {
+	margin: 5px;
+	float: left;
 	background-color: cornsilk;
 	color: #D44010;
 	border: 1px solid #D44010;
@@ -14,36 +69,44 @@ input[type='submit'] {
 	font-size: 12pt;
 	font-weight: bold;
 }
-input[type='number']{
-	width:50px;
+
+input[type='number'] {
+	width: 50px;
 	padding: 5px;
-	font-size:12pt;
+	font-size: 12pt;
 }
-.info td{
-	padding-top:15px;
-	padding-left:10px;
-	padding-right:20px;
+
+.info td {
+	padding-top: 15px;
+	padding-left: 10px;
+	padding-right: 20px;
 }
-td[class='explain']{
+
+td[class='explain'] {
 	height: 240px;
 	vertical-align: top;
-	font-size:20pt;
-	padding-right:30px;
+	font-size: 20pt;
+	padding-right: 30px;
 }
-td[class='pname']{
+
+td[class='pname'] {
 	height: 80px;
-	font-size:24pt;
-	font-weight:bold;
-	padding-top:20px;
+	font-size: 24pt;
+	font-weight: bold;
+	padding-top: 20px;
 }
-td[class='cartb']{
+
+td[class='cartb'] {
 	vertical-align: bottom;
 }
-td[class='price']{
-	font-size:20pt;
+
+td[class='price'] {
+	font-size: 20pt;
 	font-weight: bold;
 	vertical-align: bottom;
 }
+
+/*
 .header{
 	text-align:left;
 	padding-left:20px;
@@ -53,23 +116,39 @@ td[class='price']{
 	font-size:15pt;
 	font-weight:bold;
 }
+
 .mainbar{
 	background-color: cornflowerblue;
 	color:white;
 	font-weight: bold;
 }
+
 .mainbar td{
 	text-align: center;
 	padding:5px;
 }
-.menubar{
-	background-color:lavender;
+*/
+.menubar table{
+	border-collapse:collapse;
+	border:1px solid white;
+	background-color: rgb(137, 137, 137);
+	color:white;
 }
-.menubar td{
-	text-align:center;
-	padding:5px;
+
+.menubar td {
+	border:1px solid white;
+	text-align: center;
+	color:white;
+	padding: 5px;
 }
-.info table{
-	float:left;
-	width:50%;
+
+.menubar td:hover{
+	background-color:white;
+	color:black;
+	font-weight:bold;
+}
+
+.info table {
+	float: left;
+	width: 50%;
 }
