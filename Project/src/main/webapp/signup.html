@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" href="signup.css">
-	<link rel="stylesheet" href="core.css">
+	<link rel="stylesheet" href="duplication.css">
 <meta charset="UTF-8">
 <title>SignUp</title>
 </head>
@@ -10,11 +10,11 @@
 <div class="right-corner">
 <a href="login.html">로그인</a>
 <a href="signup.html">회원가입</a>
+<a href="logout.jsp">로그아웃</a>
 </div><br>
 
 <form method="post" action="mainpage.html">
 	<input type="submit" value="ShoppingMall" class="headerbt"></form>
-
 
 <div class=nav>
 <a href="category.jsp?c=식품">식품</a>
@@ -34,30 +34,30 @@
 <form method="post" action="signup.jsp" >
 	<table>
 		<tr>
-			<td colspan="2"><input type=text class="box" name=id placeholder="ID" required></td>
+			<td colspan="2"><input type=text class="box-396" name=id placeholder="ID" required></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type=password class="box" placeholder="Password" name=pw required></td>
+			<td colspan="2"><input type=password class="box-396" id="pw" placeholder="Password" name=pw required></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type=password class="box" placeholder="Password(Check)" name=rpw required></td>
+			<td colspan="2"><input type=password class="box-396" id="rpw" placeholder="Password(Check)" name=rpw required></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type=text class="box" placeholder="Name" name=na required></td>
+			<td colspan="2"><input type=text class="box-396" placeholder="Name" name=na required></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type=text class="box" placeholder="TelePhone Number" name=tel placeholder="010-0000-0000" required></td colspan="2">
+			<td colspan="2"><input type=text class="box-396" placeholder="TelePhone Number" name=tel placeholder="010-0000-0000" required></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="text" class="box" placeholder="Address" name=dad required></td>
+			<td colspan="2"><input type="text" class="box-396" placeholder="Address" name=dad required></td>
 		</tr>
 		<tr>
 			<td>
-				<input type="submit" value="회원 가입" class="ckbox"></form>
+				<input type="submit" value="회원 가입" class="ckbox-200"></form>
 			</td>
 			<td>
 				<form method="post" action="login.html">
-					<input type="submit" value="로그인창으로" class="ckbox">
+					<input type="submit" value="로그인창으로" class="ckbox-200">
 				</form>
 			</td>
 		</tr>

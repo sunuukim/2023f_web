@@ -8,7 +8,7 @@
 <html>
 <head>
 <link rel="stylesheet" href="withdraw.css">
-<link rel="stylesheet" href="core.css">
+<link rel="stylesheet" href="duplication.css">
 <meta charset="UTF-8">
 <title>Delete My Info</title>
 </head>
@@ -43,12 +43,12 @@
 	</tr>
 	<tr>
 		<td>
-			<input type="password" class=passbox name="pw" placeholder="Password" required>
+			<input type="password" class=box-392 name="pw" placeholder="Password" required>
 		</td>
 	</tr>
 		<tr>
 		<td>
-			<input type="submit" value="회원 탈퇴" class=ckbox>
+			<input type="submit" value="회원 탈퇴" class=ckbox-400>
 		</td>
 	</tr>
 </table>

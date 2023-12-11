@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="login.css">
+<link rel="stylesheet" href="duplication.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -20,12 +20,11 @@ LoginDao dao=new LoginDao();
 
 if(dao.exists(uid,upass)){
 	session.setAttribute("id",uid);
-	response.sendRedirect("mainpage.html");
-}
-else {
-	out.print("<a class=page-subhdr>");
-	out.print("아이디나 패스워드가 틀립니다. 다시 확인해 주세요.");
-	out.print("</a>");
+	out.println("<script>alert('로그인 되었습니다. 즐거운 하루 보내십시오.'); location.href='mainpage.html';</script>");
+    out.flush();
+}else {
+	out.println("<script>alert('아이디 혹은 비밀번호가 틀립니다. 다시 입력해주세요.'); location.href='login.html';</script>");
+    out.flush();
 }
 
 %>

@@ -7,29 +7,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="chpasswd.css">
+<link rel="stylesheet" href="duplication.css">
 <meta charset="UTF-8">
 <title>Password change</title>
 </head>
 <body>
 <%
 String sid=(String) session.getAttribute("id");
+String uid=(String) session.getAttribute("id");
 
-String upass=request.getParameter("pw");
-String rupass=request.getParameter("rpw");
+String upw=request.getParameter("pw");
+String rupw=request.getParameter("rpw");
 
 ChpassDao dao=new ChpassDao();
 
-if(upass.equals(rupass)){
-	if(dao.update(upass,sid)){
-		out.print("<a class=page-hdr>");
-		out.print("패스워드 변경을 완료 했습니다."+"</a>");
-		out.print("<br><br><br><br><br><hr>");
-		out.print("<form method=post action=mypage.jsp>");
-		out.print("<input type=submit class=page-main value=돌아가기>");
-		out.print("</form>");
-	}
-}else out.print("패스워드를 확인해 주세요.");
+if(!dao.passck(upw)&&dao.idck(uid)){
+	dao.update(upw,sid);
+	out.println("<script>alert('비밀번호가 변경 되었습니다.'); location.href='mypage.jsp';</script>");
+    out.flush();
+}else{
+	out.println("<script>alert('이전 비밀번호와 동일합니다. 다시 설정해 주세요.'); location.href='chpasswd.html';</script>");
+    out.flush();
+}
+
 %>
 </body>
 </html>

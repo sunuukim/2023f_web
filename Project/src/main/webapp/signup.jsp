@@ -5,8 +5,9 @@
 <html>
 <head>
 <link rel="stylesheet" href="signup.css">
+<link rel="stylesheet" href="duplication.css">
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>SignUp Error</title>
 </head>
 <body>
 <%
@@ -18,19 +19,18 @@ String utel=request.getParameter("tel");
 String udad=request.getParameter("dad");
 
 SignDao dao=new SignDao();
-if(dao.exists(uid,upass)){
-	out.print("<a class=page-hdr>");
-	out.print("존재하는 아이디 입니다."+"</a>"+"<br><br><br><br><hr>");
-	out.print("<form method=post action=signup.html>");
-	out.print("<input type=submit class=page-tmenu value=돌아가기>"+"</form>");
+
+if(dao.exists(uid)){
+	out.println("<script>alert('존재하는 계정입니다.'); location.href='signup.html';</script>");
+    out.flush();
 	return;
 }else if(!upass.equals(rupass)){
-	out.print("패스워드가 동일하지 않습니다.");
-	out.print("<form method=post action=signup.html>"+"<hr>"+
-	"<input type=submit class=page-tmenu value=돌아가기>"+"</form>");
+    out.println("<script>alert('비밀번호가 동일하지 않습니다. 다시 설정해 주세요.'); location.href='signup.html';</script>");
+    out.flush();
 }else{
-	dao.insert(uid,upass,uname,utel,udad);
-	response.sendRedirect("login.html");
+	dao.insert(uid,upass,uname,udad,utel);
+	out.println("<script>alert('계정이 생성되었습니다.'); location.href='login.html';</script>");
+    out.flush();
 }
 
 %>

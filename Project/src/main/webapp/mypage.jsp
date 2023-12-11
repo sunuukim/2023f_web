@@ -52,41 +52,43 @@
 <div class="section">
 	<form method=post action=cart.jsp>
 	<%		
-	String isql="select pid,name,category,price,type,explanation,image from item";
-	String csql="select quantity,price from cart";
+	String sql="select quantity,price,uid from cart";
 	Connection conn=ConnectionPool.get();
-	PreparedStatement istmt=conn.prepareStatement(isql);
-	PreparedStatement cstmt=conn.prepareStatement(csql);
-	ResultSet irs=istmt.executeQuery();
-	ResultSet crs=cstmt.executeQuery();
+	PreparedStatement stmt=conn.prepareStatement(sql);
+	ResultSet rs=stmt.executeQuery();
 		
 	Date now=new Date(); 
 	SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
 	String date=df.format(now);
-		
-	while(crs.next()){
+	
+	
+	while(rs.next()){
 		String str="";
 		String simg="";
-		//int del=rs.getInt("delivery");
-		int del=1;
-		if(del==0) out.print("배송 중 ");
-		else if(del==1) out.print("배송완료 ");
-		else out.print("배송취소 ");
-				
-		out.print(date+"<br>"+"<img src=./image/apple.jpg height=300 width=300>"+"<br><br>");
-		str=str+"\t"+crs.getString("price")+" 원 · "+crs.getString("quantity")+" 개 "
-		+"\t\t\t\t"+"<input type=submit value='장바구니 담기' class='cartbt'>"
-		+"<br><br>";
-		out.print(str);
+		
+		if(sid!=null){
+			//int del=rs.getInt("delivery");
+			int del=1;
+			if(del==0) out.print("배송 중 ");
+			else if(del==1) out.print("배송완료 ");
+			else out.print("배송취소 ");
+			
+			out.print(date+"<br>");
+			out.print("<img src=./image/apple.jpg height=300 width=300>");
+			out.print("<br><br>");
+			
+			str=str+"\t"+rs.getString("price")+" 원 · "+rs.getString("quantity")+" 개 "
+			+"</div><div class=rsection>"
+			+"<input type=submit value='장바구니 담기' class='cartbt'>"
+			+"<br><br>";
+			out.print(str);
+		}
 	}
 	conn.close();
-	istmt.close();
-	cstmt.close();
+	stmt.close();
 	%>
 </form>
-
 </div>
-
 
 <div class=footer>
 	<p>&Korea.uni.ShoppingMall</p>

@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+.body{
+	font-family: Arial, sans-serif;
+    background-color: #FFFFEE;
+    margin: 0;
+    padding: 0;
+}
+
+.header{
+	background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.mainheader{
+	background-color: #333;
+    padding: 1em;
+    text-align: center;
+    width: 100%;
+    color: inherit;
+    text-decoration: none;
+}
+
+.headerbt{
+	background-color: #333;
+	color: white;
+    width: 100%;
+    height: 80px;
+    font-size: 32px;
+    border: 0px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+}
+
+.subheader{
+	background-color: #717171;
+    color: white;
+    padding: 1em;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.nav{
+	display: flex;
+	justify-content: space-around;
+	background-color: #444;
+	padding: 1em 0;
+	margin-top: 5px;
+}
+
+.nav a{
+	color: white;
+    text-decoration: none;
+}
+
+.section{
+	padding: 2em;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer{
+	background-color: #333;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+    
+.right-corner{
+	float: right;
+}
+
+.box-392{
+	width: 392px;
+	height: 50px;
+	font-size: 20px;
+}
+
+.box-396{
+	width: 396px;
+	height: 50px;
+	font-size: 20px;
+}
+
+.ckbox-400{
+	width: 400px;
+	height: 50px;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+.ckbox-200{
+	width: 200px;
+	height: 50px;
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+.left-side{
+	text-indent: 10px;
+	text-align: left;
+	background-color: #dadad9;
+	width: 273px;
+	font-family: Arial, sans-serif;
+	font-size: 25px;
+}
+
+.right-side{
+	text-align: right;
+	font-size: 25px;
+	width: 120px;
+	height: 25px;
+	background-color: #dadad9;
+	font-family: Arial, sans-serif;
+}
+
+.bor{
+	border: 1px solid;
+}
