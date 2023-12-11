@@ -25,4 +25,42 @@ public class ChpassDao {
 			if(conn!=null) conn.close();
 		}
 	}
+	public boolean passck(String upw) 
+			throws NamingException, SQLException{
+		Connection conn=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try {
+			String sql="select * from user where pw=?";
+			conn=ConnectionPool.get();
+			stmt=conn.prepareStatement(sql);
+			
+			stmt.setString(1,upw);
+			rs=stmt.executeQuery();
+			return rs.next();
+		}finally {
+			if(rs!=null) rs.close();
+			if(stmt!=null) stmt.close();
+			if(conn!=null) conn.close();
+		}
+	}
+	public boolean idck(String uid) 
+			throws NamingException, SQLException{
+		Connection conn=null;
+		PreparedStatement stmt=null;
+		ResultSet rs=null;
+		try {
+			String sql="select * from user where id=?";
+			conn=ConnectionPool.get();
+			stmt=conn.prepareStatement(sql);
+			
+			stmt.setString(1,uid);
+			rs=stmt.executeQuery();
+			return rs.next();
+		}finally {
+			if(rs!=null) rs.close();
+			if(stmt!=null) stmt.close();
+			if(conn!=null) conn.close();
+		}
+	}
 }
