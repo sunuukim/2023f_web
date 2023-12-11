@@ -9,7 +9,7 @@ import javax.naming.NamingException;
 import util.ConnectionPool;
 
 public class SignDao {
-	public boolean insert(String uid, String upass, String uname,String utel, String udad ) 
+	public boolean insert(String uid, String upass, String uname, String udad, String utel) 
 			throws NamingException, SQLException{
 		Connection conn=null;
 		PreparedStatement stmt=null;
@@ -21,8 +21,8 @@ public class SignDao {
 			stmt.setString(1, uid);
 			stmt.setString(2, upass);
 			stmt.setString(3, uname);
-			stmt.setString(4, utel);
-			stmt.setString(5, udad);
+			stmt.setString(4, udad);
+			stmt.setString(5, utel);
 			
 			int count=stmt.executeUpdate();
 			return (count>0)? true:false;
@@ -37,7 +37,7 @@ public class SignDao {
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		try {
-			String sql="select id,pw from user where id=?";
+			String sql="select id from user where id=?";
 			conn=ConnectionPool.get();
 			stmt=conn.prepareStatement(sql);
 			
