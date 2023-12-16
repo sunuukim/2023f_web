@@ -14,19 +14,20 @@ public class ItemlistDao {
 		String sql = "select pid, name, category, price, image from item";
 
 		try {
+			//0 타입 1카테 2 전체 3검색
 			conn = util.ConnectionPool.get();
-			if(all!=2)
-			{
-				if(all==1) {
-					sql += " where category=?";
-				}
-				else{
-					sql += " where type=?";
+			if(all!=2) {
+				switch(all) {
+				case 0: sql += " where type=?";break;
+				case 1: sql += " where category=?";break;
+				case 3: sql += " where name like ?";t="%"+t+"%";break;
+				default: break;
 				}
 				stmt = conn.prepareStatement(sql);
 				stmt.setString(1, t);
-				
-			}else stmt = conn.prepareStatement(sql);
+			}else {
+				stmt = conn.prepareStatement(sql);
+			}
 			rs = stmt.executeQuery();
 			
 			String result = "<table align=center cellpadding=10 cellspacing=10>";
