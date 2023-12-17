@@ -30,6 +30,13 @@ case "스포츠레저":
 <jsp:include page="<%=ifile%>"/>
 </head>
 <body>
+<script>
+		function intocart(form) {
+			form.target = "_blank";
+			form.action = "cart.jsp";
+			form.submit();
+		}
+</script>
 <div class='info'>
 <%
 request.setCharacterEncoding("utf-8");
@@ -38,8 +45,9 @@ if(p!=null){
 	int pid = Integer.parseInt(p);
 	ItemlistDao idao = new ItemlistDao();
 	String str = idao.info(pid);
-	if(str!=null)
+	if(str!=null){
 		out.print(str);
+	}
 	else
 		out.print("상품 정보가 없습니다.");
 }
