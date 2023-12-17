@@ -3,7 +3,7 @@
 package dao;
 
 import java.sql.*;
-import java.sql.SQLException;
+
 import javax.naming.NamingException;
 import util.ConnectionPool;
 
@@ -12,7 +12,7 @@ public class ServicebasketDao {
 	private static final String SELECT_DELETE_ITEMS_FROM_CART_QUERY="DELETE FROM cart WHERE uid=? AND pid=?";
 	private static final String CALCULATE_ITEMS_PRICE_QUERY = "SELECT quantity, price FROM cart WHERE uid=?";
 	private static final String UPDATE_ITEM_QUANTITY_QUERY = "UPDATE cart SET quantity=? WHERE uid=? AND pid=?";
-
+	private static final String UPDATE_DELIVERY_QUERY = "UPDATE cart SET delivery=?, sdate=curdate(), ddate=(DATE_ADD(curdate(), INTERVAL 2 DAY)) WHERE uid=?";
 	
 	//선택상품 삭제
 	public boolean deleteItem(String uid, int pid)
@@ -92,5 +92,26 @@ public class ServicebasketDao {
 		}
 
 		return false;
+	}
+	
+	//배송상태 변경하는 함수 추가했습니다
+	public boolean updateDelivery(String uid, int delivery) throws NamingException, SQLException
+	{
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		try
+		{
+			conn = util.ConnectionPool.get();
+	        stmt = conn.prepareStatement(UPDATE_DELIVERY_QUERY);
+		    stmt.setInt(1, delivery);
+		    stmt.setString(2, uid);
+		    //stmt.setInt(3, pid);
+
+		    int rowAffected = stmt.executeUpdate();
+		    return rowAffected > 0;
+		}finally {
+			if(stmt!=null)stmt.close();
+			if(conn!=null)conn.close();
+		}
 	}
 }

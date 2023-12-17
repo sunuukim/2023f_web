@@ -82,6 +82,7 @@ public class ItemlistDao {
 						+ "<table><tr><td colspan=2 class=pname>"+ name
 						+ "</td></tr><tr><td colspan=2 class=explain>"+ exp +"</td></tr><tr><td class=price colspan=2>"+price+"원</td></tr>";
 				str += "<tr><td><form action='cart.jsp' method='post'>"
+						+ "<tr><td><form name=form method='post'>"
 						+ "<input type='hidden' name='pid' value="+ pid
 						+"><input type='hidden' name='c' value="+ c +">수량선택<br><br>"
 						+ "<input type='number' name='quantity' min='1' value='1' required>  개<br></td><td class=cartb>"
@@ -100,7 +101,38 @@ public class ItemlistDao {
 			if(rs!=null)rs.close();
 		}
 	}
-	
+	public boolean itemExistsinCart(String uid, int pid, int quantity) throws NamingException, SQLException
+	{
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		PreparedStatement stmtu = null;
+		ResultSet rs = null;
+		String existq = "select quantity from cart where uid=? and pid=?";
+		String updateq = "update cart set quantity=? where uid=? and pid=?";
+		try {
+			conn = util.ConnectionPool.get();
+			stmt = conn.prepareStatement(existq);
+			stmt.setString(1, uid);
+			stmt.setInt(2, pid);
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+				stmtu = conn.prepareStatement(updateq);
+				stmtu.setInt(1, quantity+rs.getInt("quantity"));
+				stmtu.setString(2, uid);
+				stmtu.setInt(3, pid);
+			}
+			else {
+				return false;
+			}
+			int count = stmtu.executeUpdate();
+			return (count>0)?true:false;
+		}finally {
+			if(rs!=null)rs.close();
+			if(stmt!=null)stmt.close();
+			if(stmtu!=null)stmtu.close();
+			if (conn != null)conn.close();
+		}
+	}
 	public boolean intoCart(int pid, int qu, String uid) throws NamingException, SQLException
 	{
 		Connection conn = null;
