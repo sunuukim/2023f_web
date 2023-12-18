@@ -23,6 +23,7 @@ table {
 	width: 70%;
 	margin-left: auto;
 	margin-right: auto;
+	border-collapse: collapse;
 }
 
 thead th {
@@ -33,12 +34,25 @@ thead th {
 	font-size: larger;
 	border-radius: 4px;
 }
-
-#time {
-	text-align: center;
+tfoot, div{
+	text-align:center;
 }
-
-div {
+tbody td{
+	
+	text-align:center;
+	border-bottom:dotted 1px lightgray;
+}
+td{
+	padding:10px;
+}
+tbody th{
+	background-color: lightgray;
+	width:170px;
+	text-align:left;
+	padding:10px;
+	border-bottom:dotted 1px white;
+}
+#time {
 	text-align: center;
 }
 </style>
@@ -65,7 +79,6 @@ div {
 		accountnum = String.valueOf(random.nextInt(90) + 10) + newtel + "<br>";
 		msg = "가상계좌";
 	}
-	//msg += "24시간 내에 입금하지 않으면 주문이 취소됩니다<br>";
 
 	String uid = (String) session.getAttribute("id");
 	ServicebasketDao updatedao = new ServicebasketDao();
@@ -89,22 +102,21 @@ div {
 				<td id="time" colspan="2"><%=paytime%></td>
 			</tr>
 			<tr>
-				<td>주문금액</td>
+				<th>주문금액</th>
 				<td><%=total%>원</td>
 			</tr>
 			<tr>
-				<td>결제수단</td>
+				<th>결제수단</th>
 				<td><%=msg%></td>
 			</tr>
 			<tr>
-				<td><%=bn%></td>
-				<td><%=accountnum%></td>
+				<th></th>
+				<td><%=bn%> <%=accountnum%></td>
 			</tr>
 		</tbody>
 		<tfoot>
 			<tr>
-				<td colspan="2">24시간 내에 입금하지 않으면 주문이 취소됩니다
-				<td>
+				<td colspan="2">24시간 내에 입금하지 않으면 주문이 취소됩니다</td>
 			</tr>
 		</tfoot>
 	</table>
@@ -119,11 +131,11 @@ div {
 				<td id="time" colspan="2"><%=deltime%></td>
 			</tr>
 			<tr>
-				<td>주문자 연락처</td>
+				<th>주문자 연락처</th>
 				<td><%=newtel%></td>
 			</tr>
 			<tr>
-				<td>배송지</td>
+				<th>배송지</th>
 				<td><%=newaddr%></td>
 			</tr>
 		</tbody>
@@ -131,7 +143,6 @@ div {
 		<%
 		msg = "";
 		if (updateA != null && updateA.equals("True")) {
-			//out.print("배송지변경테스트");
 			if (newaddr.equals(daddr) == false) {
 				ChdaddressDao addrdao = new ChdaddressDao();
 				if (addrdao.update(newaddr, uid)) {
@@ -144,8 +155,7 @@ div {
 		%>
 		<tfoot>
 			<tr>
-				<td colspan="2"><%=msg%>
-				<td>
+				<td colspan="2"><%=msg%></td>
 			</tr>
 		</tfoot>
 	</table>
@@ -154,8 +164,8 @@ div {
 
 	<div>
 		<input type='button' value="확인"
-			onclick="location.href='displayBasket.jsp'"> <input
-			type='button' value="주문상세" onclick="location.href='mypage.jsp'">
+			onclick="location.href='displayBasket.jsp'">
+		<input type='button' value="주문상세" onclick="location.href='mypage.jsp'">
 	</div>
 
 	<%

@@ -6,6 +6,15 @@
 <meta charset="UTF-8">
 <title>장바구니 담기</title>
 <link href="testcss.css" rel="stylesheet">
+<style>
+.msg{
+	display:flex;
+	flex-direction:row;
+	padding-top:30px;
+	padding-left:30px;
+	font-weight:bold;
+}
+</style>
 </head>
 <body>
 	<div class="msg">
@@ -15,7 +24,7 @@
 		int pid = Integer.parseInt(request.getParameter("pid"));
 		int qu = Integer.parseInt(request.getParameter("quantity"));
 		String uid = (String) session.getAttribute("id");
-		//String action = "iteminfo.jsp";
+		
 		String val = "쇼핑 계속하기";
 
 		if (uid == null) {
@@ -44,7 +53,6 @@
 <input type="hidden" name="c" value=<%=request.getParameter("c")%>>
 <input type="submit" value="<%=val%>">
 </form>
-<%-- <input type="button" value="<%=val%>" onclick="self.close()"> --%>
 </div>
 </body>
 </html>

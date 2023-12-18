@@ -11,14 +11,6 @@
 <meta charset="UTF-8">
 <title>결제하기</title>
 <style>
-header {
-	background-color: #333;
-	color: white;
-	padding: 1em;
-	text-align: left;
-	font-size: 16pt;
-}
-
 section {
 	background-color: white;
 	display: flex;
@@ -61,12 +53,13 @@ table {
 
 td {
 	border-bottom: dashed 1px gray;
+	padding: 5px;
 }
 
 th {
 	background-color: #333;
 	color: white;
-	font-size: 15pt;
+	font-size: 13pt;
 }
 
 div {
@@ -117,11 +110,15 @@ div {
 			<span id="title">배송지 입력</span> <span><input type="text"
 				name="newaddr" size="50" value="<%=sdad%>"> <input
 				type="hidden" name="daddr" value="<%=sdad%>"> <br>
-			<input type="radio" name="updateA" value="True">기본 배송지로 변경 </span>
+			<input type="checkbox" name="updateA" value="True">기본 배송지로 저장</span>
 		</section>
 		<section>
-			<span id="title">주문자 정보</span> <span> <%=sna%>(<%=stel%>) <br>연락처
-				<input type="text" name="newtel" size="20" value="<%=stel%>">
+			<span id="title">주문자 정보</span>
+			<span>
+				<table>
+				<tr><td>주문자</td><td><input type="text" name="newname" size="10" value="<%=sna%>"></td></tr>
+				<tr><td>연락처</td><td><input type="text" name="newtel" size="20" value="<%=stel%>"></td></tr>
+				</table>
 				<input type="hidden" name="tel" value="<%=stel%>">
 			</span> <br>
 		</section>
@@ -188,7 +185,7 @@ div {
 		</section>
 		<section>
 			<span>
-				<table align="center">
+				<table id="integer" align="center">
 					<tr>
 						<td>상품금액</td>
 						<td id="integer"><%=total%>원</td>

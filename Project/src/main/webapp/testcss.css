@@ -38,15 +38,6 @@ nav a {
 	color: white;
 	text-decoration: none;
 }
-/*
-section {
-	padding: 2em;
-	text-align: center;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-*/
 footer {
 	background-color: #333;
 	color: white;
@@ -64,7 +55,7 @@ a {
 	text-decoration-line: none;
 }
 
-input[type='submit'] {
+input[type='submit'],input[type="button"] {
 	margin: 5px;
 	background-color: lightgray;
 	color: black;
@@ -74,32 +65,10 @@ input[type='submit'] {
 	font-size: 12pt;
 	font-weight: bold;
 }
-input[type='submit']:hover{
+input[type='submit']:hover, input[type="button"]:hover{
 	background-color:black;
 	color:white;
 	cursor:pointer;
-}
-input[type="button"]{
-	margin: 5px;
-	background-color: lightgray;
-	color: black;
-	border: 1px solid gray;
-	border-radius: 10px;
-	padding: 10px 16px;
-	font-size: 12pt;
-	font-weight: bold;
-}
-input[type="button"]:hover{
-	background-color:black;
-	color:white;
-	cursor:pointer;
-}
-.msg{
-	display:flex;
-	flex-direction:row;
-	padding-top:30px;
-	padding-left:30px;
-	font-weight:bold;
 }
 
 input[type="text"]{
@@ -114,37 +83,6 @@ input[type='number'] {
 	padding: 5px;
 	font-size: 12pt;
 }
-
-.info td {
-	padding-top: 15px;
-	padding-left: 10px;
-	padding-right: 20px;
-}
-
-td[class='explain'] {
-	height: 240px;
-	vertical-align: top;
-	font-size: 20pt;
-	padding-right: 30px;
-}
-
-td[class='pname'] {
-	height: 80px;
-	font-size: 24pt;
-	font-weight: bold;
-	padding-top: 20px;
-}
-
-td[class='cartb'] {
-	vertical-align: bottom;
-}
-
-td[class='price'] {
-	font-size: 20pt;
-	font-weight: bold;
-	vertical-align: bottom;
-}
-
 
 .menubar table{
 	border-collapse:collapse;/*테두리*/

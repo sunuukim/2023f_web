@@ -28,15 +28,40 @@ case "스포츠레저":
 <%@ page import ="util.ConnectionPool" %>
 <%@ page import = "dao.ItemlistDao" %>
 <jsp:include page="<%=ifile%>"/>
+<style>
+.info td {
+	padding-top: 15px;
+	padding-left: 10px;
+	padding-right: 20px;
+}
+
+td[class='explain'] {
+	height: 240px;
+	vertical-align: top;
+	font-size: 20pt;
+	padding-right: 30px;
+}
+
+td[class='pname'] {
+	height: 80px;
+	font-size: 24pt;
+	font-weight: bold;
+	padding-top: 20px;
+}
+
+td[class='cartb'] {
+	text-align:center;
+	vertical-align: bottom;
+}
+
+td[class='price'] {
+	font-size: 24pt;
+	font-weight: bold;
+	vertical-align: bottom;
+}
+</style>
 </head>
 <body>
-<script>
-		function intocart(form) {
-			form.target = "_blank";
-			form.action = "cart.jsp";
-			form.submit();
-		}
-</script>
 <div class='info'>
 <%
 request.setCharacterEncoding("utf-8");
