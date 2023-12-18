@@ -1,10 +1,11 @@
 @charset "UTF-8";
 
-h1 {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-}
+header {
+            background-color: #333;
+            color: white;
+            padding: 1em;
+            text-align: center;
+        }
 
 body {
     font-family: Arial, sans-serif;
