@@ -1,5 +1,3 @@
-//장바구니 기능(추가, 삭제, 선택삭제) 중 선택삭제 부분만 남음
-//pid도 장바구니 DB에 넣어줘야하는지 고민하기
 package dao;
 
 import java.sql.*;
@@ -8,9 +6,9 @@ import javax.naming.NamingException;
 import util.ConnectionPool;
 
 public class ServicebasketDao {
-	private static final String DELETE_ALL_ITEMS_FROM_CART_QUERY="DELETE FROM cart WHERE uid=?";
-	private static final String SELECT_DELETE_ITEMS_FROM_CART_QUERY="DELETE FROM cart WHERE uid=? AND pid=?";
-	private static final String CALCULATE_ITEMS_PRICE_QUERY = "SELECT quantity, price FROM cart WHERE uid=?";
+	private static final String DELETE_ALL_ITEMS_FROM_CART_QUERY="DELETE FROM cart WHERE uid=? AND delivery=0";
+	private static final String SELECT_DELETE_ITEMS_FROM_CART_QUERY="DELETE FROM cart WHERE uid=? AND pid=? AND delivery=0";
+	private static final String CALCULATE_ITEMS_PRICE_QUERY = "SELECT quantity, price FROM cart WHERE uid=? AND delivery=0";
 	private static final String UPDATE_DELIVERY_QUERY = "UPDATE cart SET delivery=?, sdate=curdate(), ddate=(DATE_ADD(curdate(), INTERVAL 2 DAY)) WHERE uid=?";
 	
 	//선택상품 삭제
@@ -86,7 +84,6 @@ public class ServicebasketDao {
 	        stmt = conn.prepareStatement(UPDATE_DELIVERY_QUERY);
 		    stmt.setInt(1, delivery);
 		    stmt.setString(2, uid);
-		    //stmt.setInt(3, pid);
 
 		    int rowAffected = stmt.executeUpdate();
 		    return rowAffected > 0;
