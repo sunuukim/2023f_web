@@ -26,7 +26,7 @@
 			%>
 		</div>
 		<form action="itemsearch.jsp"><a href="mainpage.html">Shoppingmall</a>
-		<input id="search" type="text" name="pname"><input type="submit" value="검색"></form>
+		<input id="search" type="text" name="pname" size="50" placeholder="상품명을 입력하세요"><input type="submit" value="검색"></form>
 	</header>
 
 	<nav>

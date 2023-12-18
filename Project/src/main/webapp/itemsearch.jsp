@@ -9,12 +9,21 @@
 <%@ page import = "util.ConnectionPool" %>
 <%@ page import = "dao.ItemlistDao" %>
 <%@ include file="Mainmenu.jsp" %>
+<style>
+h4, h5{
+	text-align:center;
+	font-weight:normal;
+}
+span{
+	font-weight:bold;
+}
+</style>
 </head>
 <body>
 <%
 request.setCharacterEncoding("utf-8");
 String pname = request.getParameter("pname");
-String msg = "'" +pname+ "' 에 대한 검색결과 입니다.";
+String msg = "<h4><span>'" +pname+ "'</span> 에 대한 검색결과 입니다.</h4>";
 out.print(msg);
 %>
 <hr>
@@ -24,7 +33,7 @@ String str = idao.listing(pname, 3);
 if(str!=""){
 	out.print(str);
 }else{
-	out.print("상품이 존재하지 않습니다.\n단어의 철자가 정확한지 확인해보세요.");
+	out.print("<h5>상품이 존재하지 않습니다.</h5>");
 }
 %>
 </body>
