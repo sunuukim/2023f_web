@@ -11,7 +11,7 @@ import javax.naming.NamingException;
 
 public class BasketDao {
     private static final String SELECT_BASKET_ITEMS_QUERY =
-        "SELECT pid, image, name, quantity, price FROM shoppingmall WHERE validity = 1 AND uid = ? AND delivery = 0";
+        "SELECT pid, image, name, quantity, price FROM shoppingmall WHERE uid = ? AND delivery = 0";
 
     public ArrayList<BasketItem> getBasketItems(String uid) {
         ArrayList<BasketItem> basketItemList = new ArrayList<>();
