@@ -1,5 +1,3 @@
-//아직 오류 검증 안함
-//장바구니 데이터베이스의 정보들을 리스트로 변환할 예정
 package dao;
 
 import java.sql.*;
@@ -10,25 +8,28 @@ import java.sql.Connection;
 import javax.naming.NamingException;
 
 public class BasketDao {
-	private static final String SELECT_BASKET_ITEMS_QUERY="SELECT pid,image, name, quantity, price FROM shoppingmall WHERE validity=1";
-	
-	public ArrayList<BasketItem> getBasketItems() {
+    private static final String SELECT_BASKET_ITEMS_QUERY = "SELECT pid, image, name, quantity, price FROM shoppingmall WHERE validity = 1 AND uid = ?";
+
+    public ArrayList<BasketItem> getBasketItems(String uid) {
         ArrayList<BasketItem> basketItemList = new ArrayList<>();
 
         try (Connection conn = util.ConnectionPool.get();
-             PreparedStatement stmt = conn.prepareStatement(SELECT_BASKET_ITEMS_QUERY);
-             ResultSet rs = stmt.executeQuery()) {
+             PreparedStatement stmt = conn.prepareStatement(SELECT_BASKET_ITEMS_QUERY)) {
 
-            while (rs.next()) {
-            	int pid=rs.getInt("pid");
-            	String image = rs.getString("image");
-                String name = rs.getString("name");
-                int quantity = rs.getInt("quantity");
-                double price = rs.getDouble("price");
+            stmt.setString(1, uid);  
+            try (ResultSet rs = stmt.executeQuery()) {
 
-                // BasketItem 객체를 생성하여 ArrayList에 추가
-                BasketItem basketItem = new BasketItem(pid, image, name, quantity, price); 
-                basketItemList.add(basketItem);
+                while (rs.next()) {
+                    int pid = rs.getInt("pid");
+                    String image = rs.getString("image");
+                    String name = rs.getString("name");
+                    int quantity = rs.getInt("quantity");
+                    double price = rs.getDouble("price");
+
+                    // BasketItem 객체를 생성하여 ArrayList에 추가
+                    BasketItem basketItem = new BasketItem(pid, image, name, quantity, price);
+                    basketItemList.add(basketItem);
+                }
             }
         } catch (SQLException | NamingException e) {
             e.printStackTrace(); // 오류 처리
