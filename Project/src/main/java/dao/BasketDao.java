@@ -1,3 +1,5 @@
+//아직 오류 검증 안함
+//장바구니 데이터베이스의 정보들을 리스트로 변환할 예정
 package dao;
 
 import java.sql.*;
@@ -8,7 +10,8 @@ import java.sql.Connection;
 import javax.naming.NamingException;
 
 public class BasketDao {
-    private static final String SELECT_BASKET_ITEMS_QUERY = "SELECT pid, image, name, quantity, price FROM shoppingmall WHERE validity = 1 AND uid = ?";
+    private static final String SELECT_BASKET_ITEMS_QUERY =
+        "SELECT pid, image, name, quantity, price FROM shoppingmall WHERE validity = 1 AND uid = ? AND delivery = 0";
 
     public ArrayList<BasketItem> getBasketItems(String uid) {
         ArrayList<BasketItem> basketItemList = new ArrayList<>();
@@ -16,7 +19,7 @@ public class BasketDao {
         try (Connection conn = util.ConnectionPool.get();
              PreparedStatement stmt = conn.prepareStatement(SELECT_BASKET_ITEMS_QUERY)) {
 
-            stmt.setString(1, uid);  
+            stmt.setString(1, uid);  // Set the uid parameter in the prepared statement
             try (ResultSet rs = stmt.executeQuery()) {
 
                 while (rs.next()) {
