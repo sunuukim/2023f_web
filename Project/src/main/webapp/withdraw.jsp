@@ -3,39 +3,50 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="util.ConnectionPool" %>
 <%@ page import="dao.SignDao" %>
+<%@ page import = "dao.ItemlistDao" %>
+<%@ include file="Mainmenu.jsp" %>
 <%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="withdraw.css">
 <link rel="stylesheet" href="duplication.css">
+<link href="testcss.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>Delete My Info</title>
 </head>
 <body>
-<div class="right-corner">
-<a href="login.html">로그인</a>
-<a href="signup.html">회원가입</a>
-</div><br>
+<%
+String referer = request.getHeader("Referer");
+String sid=(String) session.getAttribute("id");
 
-<form method="post" action="mainpage.html">
-	<input type="submit" value="ShoppingMall" class="headerbt"></form>
+if(sid==null){
+	out.println("<script>alert('로그인 되어있지 않습니다.'); location.href='mypage.jsp';</script>");
+    out.flush();
+}
+%>
 
-<div class=nav>
-<a href="category.jsp?c=식품">식품</a>
-<a href="category.jsp?c=생활용품">생활용품</a>
-<a href="category.jsp?c=패션의류">패션의류</a>
-<a href="category.jsp?c=스포츠레저">스포츠레저</a>
-<a href="mypage.jsp">마이페이지</a>
-<a href="cart.jsp">장바구니</a>
-</div>
-<%String sid=(String) session.getAttribute("id");%>
+<%
+Connection conn=null;
+PreparedStatement stmt=null;
+ResultSet rs=null;
+String sql="select * from user";
+conn=ConnectionPool.get();
+stmt=conn.prepareStatement(sql);
+rs = stmt.executeQuery(sql);
+String sname="";
 
-<h2 class="subheader">회원탈퇴 페이지</h2>
+while(rs.next()){
+	if(sid.equals(rs.getString("id"))){
+		sname=rs.getString("name");
+	}
+}
+%>
+
+<nav class="exheader">회원탈퇴 페이지</nav>
 
 <form method="post" action="withdrawck.jsp">
 <div class=section>
-<table class=box>
+<table>
 	<tr>
 		<td class=text>
 			ID : <%=sid	%>
@@ -43,7 +54,7 @@
 	</tr>
 	<tr>
 		<td>
-			<input type="password" class=box-392 name="pw" placeholder="Password" required>
+			<input type="password" class=box-396 name="pw" placeholder="Password" required>
 		</td>
 	</tr>
 		<tr>
@@ -55,8 +66,8 @@
 </div>
 </form>
 
-<div class=footer>
+<footer>
 <p>&Korea.uni.ShoppingMall</p>
-</div>
+</footer>
 </body>
 </html>

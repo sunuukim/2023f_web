@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
-<%@ page import="java.util.Date" %>
-<%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="util.ConnectionPool" %>
+<%@ page import = "dao.ItemlistDao" %>
+<%@ include file="Mainmenu.jsp" %>
 <%@ page session="true" %>
 <!DOCTYPE html>
 <html>
@@ -13,85 +13,104 @@
 <title>My page</title>
 </head>
 <body>
-<%String sid=(String) session.getAttribute("id"); %>
+<%
+String referer = request.getHeader("Referer");
+String sid=(String) session.getAttribute("id");
 
-<div class="right-corner">
-<a href="login.html">로그인</a>
-<a href="signup.html">회원가입</a>
-<a href="logout.jsp">로그아웃</a>
-</div><br>
-<h1 class="header">마이 페이지</h1>
+Connection conn=ConnectionPool.get();
 
-<div class=nav>
-<a href="category.jsp?c=식품">식품</a>
-<a href="category.jsp?c=생활용품">생활용품</a>
-<a href="category.jsp?c=패션의류">패션의류</a>
-<a href="category.jsp?c=스포츠레저">스포츠레저</a>
-<a href="mypage.jsp">마이페이지</a>
-<a href="cart.jsp">장바구니</a>
-</div><br>
+if(sid==null){
+	out.println("<script>alert('로그인 되어있지 않습니다.'); location.href='login.html';</script>");
+    out.flush();
+} %>
+
+<%
+String sname="";
+
+String usersql="select name,id from user";
+String cartsql="select * from cart";
+String itemsql="select * from item";
+
+PreparedStatement userstmt=conn.prepareStatement(usersql);
+PreparedStatement cartstmt=conn.prepareStatement(cartsql);
+ResultSet cartrs=cartstmt.executeQuery();
+ResultSet userrs=userstmt.executeQuery();
+%>
+
+<nav class="exheader">마이 페이지</nav>
 
 <div class=lsection>
 <form method=post action="myinfo.jsp">
 	<input type=submit class="leftckbox" value="내 정보 확인">
-</form><br>
-<form method=post action="cart.jsp">
+</form>
+<form method=post action="displayBasket.jsp">
 	<input type=submit class="leftckbox" value="장바구니">
-</form><br>
-<form method=post action="daddress.html">
+</form>
+<form method=post action="chaddr.jsp">
 	<input type=submit class="leftckbox" value="배송지 변경">
-</form><br>
-<form method=post action="chpasswd.html">		
+</form>
+<form method=post action="chpw.jsp">		
 	<input type=submit class="leftckbox" value="패스워드 변경">
-</form><br>
+</form>
 <form method=post action="withdraw.jsp">
 	<input type=submit class="leftckbox" value="회원 탈퇴">
 </form>
 </div>
 
-<div class="section">
+<div class=section>
 	<form method=post action=cart.jsp>
-	<%		
-	String sql="select quantity,price,uid from cart";
-	Connection conn=ConnectionPool.get();
-	PreparedStatement stmt=conn.prepareStatement(sql);
-	ResultSet rs=stmt.executeQuery();
-		
-	Date now=new Date(); 
-	SimpleDateFormat df=new SimpleDateFormat("yyyy-MM-dd");
-	String date=df.format(now);
-	
-	
-	while(rs.next()){
-		String str="";
-		String simg="";
-		
-		if(sid!=null){
-			//int del=rs.getInt("delivery");
-			int del=1;
-			if(del==0) out.print("배송 중 ");
-			else if(del==1) out.print("배송완료 ");
-			else out.print("배송취소 ");
+	<%	
+	while(cartrs.next()){
+		if(sid.equals(cartrs.getString("uid"))){
+			String sdate=cartrs.getString("sdate");
+			String ddate=cartrs.getString("ddate");
+			int delivery=cartrs.getInt("delivery");
+			String str=cartrs.getInt("price")+" 원 · "+cartrs.getInt("quantity")+" 개 ";
+			String simg=cartrs.getString("image");
+			String exp=cartrs.getString("explanation");
 			
-			out.print(date+"<br>");
-			out.print("<img src=./image/apple.jpg height=300 width=300>");
-			out.print("<br><br>");
-			
-			str=str+"\t"+rs.getString("price")+" 원 · "+rs.getString("quantity")+" 개 "
-			+"</div><div class=rsection>"
-			+"<input type=submit value='장바구니 담기' class='cartbt'>"
-			+"<br><br>";
-			out.print(str);
+			out.print("<table class=table>");
+			out.print("<tr>");
+				out.print("<td>");
+					out.print(sdate+" 주문");
+				out.print("</td>");
+			out.print("</tr>");
+			out.print("<tr>");
+				out.print("<td class=font>");
+					if(delivery==0) out.print("배송 중 ");
+					else if(delivery==1) out.print("배송완료 ");
+					else out.print("배송취소 ");
+					out.print(ddate);
+				out.print("</td>");
+			out.print("</tr>");
+			out.print("<tr>");
+				out.print("<td>");%>
+					<img src="./image/<%=simg %>" height=300 width=300>
+				<%out.print("</td>");
+				out.print("<td class=expfont>");
+					out.print(exp);
+				out.print("</td>");
+			out.print("</tr>");
+			out.print("<tr>");
+				out.print("<td>");
+					out.print(str);
+				out.print("</td>");
+				out.print("<td>");
+					out.print("<input type=submit value='장바구니 담기' class=cartbt>");
+				out.print("</td>");
+			out.print("</tr>");
+		out.print("</table><br>");	
 		}
-	}
+	}	
+	cartrs.close(); userrs.close();
 	conn.close();
-	stmt.close();
+	cartstmt.close(); userstmt.close();
 	%>
-</form>
+	</form>
 </div>
 
-<div class=footer>
+<footer>
 	<p>&Korea.uni.ShoppingMall</p>
-</div>
+</footer>
 </body>
 </html>

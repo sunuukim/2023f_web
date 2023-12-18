@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="util.ConnectionPool" %>
-<%@ page import="dao.SignDao" %>
+<%@ page import="dao.LoginDao" %>
 <%@ page session="true" %>
 <!DOCTYPE html>
 <html>
@@ -38,12 +38,16 @@
 			<%
 			String upw=request.getParameter("pw");
 
-			SignDao dao=new SignDao();
+			LoginDao dao=new LoginDao();
 
-			if(dao.exists(sid, upw)){
+			if(dao.exists(sid,upw)){
 				dao.delete(sid);
-				response.sendRedirect("login.html");
-			}else out.print("패스워드가 동일하지 않습니다.");
+				out.println("<script>alert('회원탈퇴 완료'); location.href='mainpage.html';</script>");
+			    out.flush();
+			}else {
+				out.println("<script>alert('비밀번호가 동일하지 않습니다.'); location.href='withdraw.jsp';</script>");
+			    out.flush();
+			}
 			%>
 			</h2>
 		</tb>

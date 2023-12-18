@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="signup.css">
 <link rel="stylesheet" href="duplication.css">
 <meta charset="UTF-8">
 <title>SignUp Error</title>

@@ -2,11 +2,14 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="util.ConnectionPool" %>
+<%@ page import = "dao.ItemlistDao" %>
+<%@ include file="Mainmenu.jsp" %>
 <%@ page session="true" %>
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" href="duplication.css">
+<link href="testcss.css" rel="stylesheet">
 <meta charset="UTF-8">
 <title>My Information</title>
 </head>
@@ -24,33 +27,19 @@ rs = stmt.executeQuery(sql);
 String sna="";
 String sdad="";
 String stel="";
+String sname="";
 
 while(rs.next()) {
-	sna=rs.getString("name");
-	sdad=rs.getString("daddress");
-	stel=rs.getString("tel");
+	if(sid.equals(rs.getString("id"))){
+		sname=rs.getString("name");
+		sna=rs.getString("name");
+		sdad=rs.getString("daddress");
+		stel=rs.getString("tel");
+	}
 }
 %>
 
-<div class="right-corner">
-<a href="login.html">로그인</a>
-<a href="signup.html">회원가입</a>
-<a href="logout.html">로그아웃</a>
-</div><br>
-
-<form method="post" action="mainpage.html">
-	<input type="submit" value="ShoppingMall" class="headerbt"></form>
-
-<div class=nav>
-<a href="category.jsp?c=식품">식품</a>
-<a href="category.jsp?c=생활용품">생활용품</a>
-<a href="category.jsp?c=패션의류">패션의류</a>
-<a href="category.jsp?c=스포츠레저">스포츠레저</a>
-<a href="mypage.jsp">마이페이지</a>
-<a href="cart.jsp">장바구니</a>
-</div>
-
-<h2 class=header>내 정보 확인</h2>
+<nav class=exheader>내 정보 확인</nav>
 
 <div class=section>
 <table>
@@ -95,9 +84,9 @@ while(rs.next()) {
 </table>
 </div>
 
-<div class=footer>
+<footer>
 <p>&Korea.uni.ShoppingMall</p>
-</div>
+</footer>
 <%
 if(rs!=null) rs.close();
 if(stmt!=null) stmt.close();

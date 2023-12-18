@@ -1,55 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="signup.css">
 	<link rel="stylesheet" href="duplication.css">
 <meta charset="UTF-8">
 <title>SignUp</title>
 </head>
 <body>
-<div class="right-corner">
-<a href="login.html">로그인</a>
-<a href="signup.html">회원가입</a>
-<a href="logout.jsp">로그아웃</a>
-</div><br>
-
+	<header>
 <form method="post" action="mainpage.html">
 	<input type="submit" value="ShoppingMall" class="headerbt"></form>
+</header>
 
-<div class=nav>
+<nav>
 <a href="category.jsp?c=식품">식품</a>
 <a href="category.jsp?c=생활용품">생활용품</a>
 <a href="category.jsp?c=패션의류">패션의류</a>
 <a href="category.jsp?c=스포츠레저">스포츠레저</a>
 <a href="mypage.jsp">마이페이지</a>
 <a href="cart.jsp">장바구니</a>
-</div>
+</nav>
 
-<div class="header">
-<h2>회원 가입 페이지</h2>
-<h3 class="exheader">회원 정보를 입력해주세요</h3>
-</div>
+<nav class="exheader">회원 가입 페이지</nav>
+<nav class="explain">회원 정보를 입력해주세요</nav>
 
 <div class="section">
 <form method="post" action="signup.jsp" >
 	<table>
 		<tr>
-			<td colspan="2"><input type=text class="box-396" name=id placeholder="ID" required></td>
+			<td colspan="2"><input type=text class="loginbox" name=id placeholder="ID" required></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type=password class="box-396" id="pw" placeholder="Password" name=pw required></td>
+			<td colspan="2"><input type=password class="loginbox" id="pw" placeholder="Password" name=pw required></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type=password class="box-396" id="rpw" placeholder="Password(Check)" name=rpw required></td>
+			<td colspan="2"><input type=password class="loginbox" id="rpw" placeholder="Password(Check)" name=rpw required></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type=text class="box-396" placeholder="Name" name=na required></td>
+			<td colspan="2"><input type=text class="loginbox" placeholder="Name" name=na required></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type=text class="box-396" placeholder="TelePhone Number" name=tel placeholder="010-0000-0000" required></td>
+			<td colspan="2"><input type=text class="loginbox" placeholder="TelePhone Number" name=tel placeholder="010-0000-0000" required></td>
 		</tr>
 		<tr>
-			<td colspan="2"><input type="text" class="box-396" placeholder="Address" name=dad required></td>
+			<td colspan="2"><input type="text" class="loginbox" placeholder="Address" name=dad required></td>
 		</tr>
 		<tr>
 			<td>
@@ -64,8 +57,8 @@
 	</table>
 </div>
 
-<div class="footer">
+<footer>
 	<p>&Korea.uni.ShoppingMall</p> 
-</div>
+</footer>
 </body>
 </html>

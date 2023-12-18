@@ -13,6 +13,7 @@
 </head>
 <body>
 <%
+String ref=(String)request.getHeader("Referer");
 String uid=request.getParameter("id");
 String upass=request.getParameter("pw");
 
@@ -21,16 +22,13 @@ LoginDao dao=new LoginDao();
 if(dao.exists(uid,upass)){
 	session.setAttribute("id",uid);
 	out.println("<script>alert('로그인 되었습니다. 즐거운 하루 보내십시오.'); location.href='mainpage.html';</script>");
-    out.flush();
+	out.flush();
+	
 }else {
 	out.println("<script>alert('아이디 혹은 비밀번호가 틀립니다. 다시 입력해주세요.'); location.href='login.html';</script>");
     out.flush();
 }
 
 %>
-<hr>
-<form method=post action=login.html>
-<input type=submit class=page-tmenu value="돌아가기">
-</form>
 </body>
 </html>
