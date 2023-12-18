@@ -2,7 +2,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="dao.BasketDao" %>
 <%@ page import="dao.ServicebasketDao" %>
-<!-- calculateTotalPrice함수 오류 -->
 
 <!DOCTYPE html>
 <html>
