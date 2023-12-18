@@ -11,7 +11,6 @@ public class ServicebasketDao {
 	private static final String DELETE_ALL_ITEMS_FROM_CART_QUERY="DELETE FROM cart WHERE uid=?";
 	private static final String SELECT_DELETE_ITEMS_FROM_CART_QUERY="DELETE FROM cart WHERE uid=? AND pid=?";
 	private static final String CALCULATE_ITEMS_PRICE_QUERY = "SELECT quantity, price FROM cart WHERE uid=?";
-	private static final String UPDATE_ITEM_QUANTITY_QUERY = "UPDATE cart SET quantity=? WHERE uid=? AND pid=?";
 	private static final String UPDATE_DELIVERY_QUERY = "UPDATE cart SET delivery=?, sdate=curdate(), ddate=(DATE_ADD(curdate(), INTERVAL 2 DAY)) WHERE uid=?";
 	
 	//선택상품 삭제
@@ -74,24 +73,6 @@ public class ServicebasketDao {
 		}
 
 		return totalPrice;
-	}
-	
-	//상품 수량을 업데이트
-	public boolean updateQuantity(String uid, int pid, int quantity)
-	{
-		try (Connection conn = util.ConnectionPool.get();
-		        PreparedStatement stmt = conn.prepareStatement(UPDATE_ITEM_QUANTITY_QUERY)) {
-		    stmt.setInt(1, quantity);
-		    stmt.setString(2, uid);
-		    stmt.setInt(3, pid);
-
-		    int rowAffected = stmt.executeUpdate();
-		    return rowAffected > 0;
-		} catch (SQLException | NamingException e) {
-		    e.printStackTrace();
-		}
-
-		return false;
 	}
 	
 	//배송상태 변경하는 함수 추가했습니다
