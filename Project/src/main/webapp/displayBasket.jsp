@@ -2,6 +2,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="dao.BasketDao" %>
 <%@ page import="dao.ServicebasketDao" %>
+<!-- calculateTotalPrice함수 오류 -->
 
 <!DOCTYPE html>
 <html>
@@ -67,9 +68,6 @@
            <input type="submit" value="로그인">
        </form>
    <% } else { %>
-       <!-- JavaScript 코드 불러오기 -->
-       <p>상품 수량이 변경되었습니다.</p>
-       <script src="path/to/updateQuantity.jsp"></script>
 
     <%
         ServicebasketDao servicebasketDao = new ServicebasketDao();
