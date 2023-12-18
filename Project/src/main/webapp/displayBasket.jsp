@@ -38,15 +38,7 @@
                     <tr>
                         <td><img width=200 src="image/<%= basketItem.getImage() %>" alt="<%= basketItem.getName() %>"></td>
                         <td><%= basketItem.getName() %></td>
-                       
-                        <td>
-                         <select name="quantity" id="quantity_<%= basketItem.getPid() %>" onchange="updateQuantity('<%= session.getAttribute("id") %>', '<%= basketItem.getPid() %>', '<%= basketItem.getQuantity() %>', '<%= basketItem.getPid() %>')">
-                         <% for (int i = 1; i <= 10; i++) { %>
-                             <option value="<%= i %>" <%= i == basketItem.getQuantity() ? "selected" : "" %>><%= i %></option>
-                         <% } %>
-                     </select>
-
-                     </td>
+                        <td><%= basketItem.getQuantity() %></td>
                         <td><%= basketItem.getPrice() %></td>
                         <td><input type="checkbox" name="selectedItems" value="<%= basketItem.getPid() %>"></td>
                     </tr>
