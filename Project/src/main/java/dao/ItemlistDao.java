@@ -107,7 +107,7 @@ public class ItemlistDao {
 		PreparedStatement stmt = null;
 		PreparedStatement stmtu = null;
 		ResultSet rs = null;
-		String existq = "select quantity from cart where uid=? and pid=?";
+		String existq = "select quantity from cart where uid=? and pid=? and delivery=0";
 		String updateq = "update cart set quantity=? where uid=? and pid=?";
 		try {
 			conn = util.ConnectionPool.get();
