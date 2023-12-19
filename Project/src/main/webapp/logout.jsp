@@ -25,9 +25,5 @@ if(dao.exists(sid)){
 }
 
 %>
-<hr>
-<form method=post action="login.html">
-<input type=submit value="로그인 창으로">
-</form>
 </body>
 </html>
