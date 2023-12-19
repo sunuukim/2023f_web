@@ -23,8 +23,14 @@ if(dao.exists(uid)){
 	out.println("<script>alert('존재하는 계정입니다.'); location.href='signup.html';</script>");
     out.flush();
 	return;
+}else if(uid.length()<4||uid.length()>64){
+	out.println("<script>alert('ID는 4자에서 64자 사이로 설정해 주세요.'); location.href='signup.html';</script>");
+    out.flush();
 }else if(!upass.equals(rupass)){
     out.println("<script>alert('비밀번호가 동일하지 않습니다. 다시 설정해 주세요.'); location.href='signup.html';</script>");
+    out.flush();
+}else if(upass.length()<8){
+	out.println("<script>alert('비밀번호는 8자리 이상으로 설정해 주세요.'); location.href='signup.html';</script>");
     out.flush();
 }else{
 	dao.insert(uid,upass,uname,udad,utel);
