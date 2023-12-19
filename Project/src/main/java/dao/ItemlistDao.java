@@ -14,12 +14,12 @@ public class ItemlistDao {
 		String sql = "select pid, name, category, price, image from item";
 
 		try {
-			//0 타입 1카테 2 전체 3검색
+			//0 전체 1 카테고리 2 타입(상세카테고리) 3 검색
 			conn = util.ConnectionPool.get();
-			if(all!=2) {
+			if(all!=0) {
 				switch(all) {
-				case 0: sql += " where type=?";break;
 				case 1: sql += " where category=?";break;
+				case 2: sql += " where type=?";break;
 				case 3: sql += " where name like ?";t="%"+t+"%";break;
 				default: break;
 				}
