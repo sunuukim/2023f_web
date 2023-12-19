@@ -46,11 +46,16 @@ span {
 #integer {
 	text-align: right;
 }
-
+.big{
+	font-size:x-large;
+	font-wieght:bold;
+}
 table {
 	width: 100%;
 }
-
+table[id="integer"]{
+	border-collapse: collapse;
+}
 td {
 	border-bottom: dashed 1px gray;
 	padding: 5px;
@@ -147,6 +152,7 @@ div {
 					total += basketItem.getPrice() * basketItem.getQuantity();
 					}
 					%>
+					<tr><td class="big" id="integer" colspan="4">총 <%=total%>원</td></tr>
 				</table>
 			</span>
 		</section>
@@ -198,8 +204,8 @@ div {
 					total += deliveryfee;
 					%>
 					<tr>
-						<th>주문금액</th>
-						<th id="integer"><%=total%>원</th>
+						<th class="big">주문금액</th>
+						<th class="big" id="integer"><%=total%>원</th>
 					</tr>
 				</table>
 			</span>
