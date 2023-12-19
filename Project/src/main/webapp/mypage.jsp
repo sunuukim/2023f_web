@@ -61,7 +61,7 @@ ResultSet userrs=userstmt.executeQuery();
 	<form method=post action=cart.jsp>
 	<%	
 	while(cartrs.next()){
-		if(sid.equals(cartrs.getString("uid"))){
+		if(sid.equals(cartrs.getString("uid"))&&(cartrs.getInt("delivery")==1)){
 			String sdate=cartrs.getString("sdate");
 			String ddate=cartrs.getString("ddate");
 			int delivery=cartrs.getInt("delivery");
@@ -77,10 +77,8 @@ ResultSet userrs=userstmt.executeQuery();
 			out.print("</tr>");
 			out.print("<tr>");
 				out.print("<td class=font>");
-					if(delivery==0) out.print("배송 중 ");
-					else if(delivery==1) out.print("배송완료 ");
-					else out.print("배송취소 ");
-					out.print(ddate);
+					out.print("배송 준비 중 ");
+					out.print(ddate+"예정");
 				out.print("</td>");
 			out.print("</tr>");
 			out.print("<tr>");
