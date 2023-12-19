@@ -110,7 +110,7 @@ div {
 	int deliveryfee = 2500;
 	%>
 
-	<form action="finish.jsp" method="get">
+	<form action="finish.jsp" method="post">
 		<section>
 			<span id="title">배송지 입력</span> <span><input type="text"
 				name="newaddr" size="50" value="<%=sdad%>"> <input
