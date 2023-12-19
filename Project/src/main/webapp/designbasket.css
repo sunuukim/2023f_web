@@ -1,92 +1,111 @@
 @charset "UTF-8";
 
 header {
-            background-color: #333;
-            color: white;
-            padding: 1em;
-            text-align: center;
-        }
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+	background-color: #333;
+	color: white;
+	padding: 1em;
+	text-align: center;
+}
+header a {
+	background-color: #333;
+	color: white;
+	text-decoration: none;
+	font-weight: bold;
 }
 
-h2 {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f2f2f2;
+	margin: 0;
+	padding: 0;
+	align-items: center;
+}
+nav {
+	display: flex;
+	justify-content: space-around;
+	background-color: #444;
+	color:white;
+	padding: 1em 0;
+	margin-top: 5px;
+}
+.right-corner {
+	text-align:right;
+	float: right;
+	font-size: initial;
+}
+div{
+	text-align:center;
+}
+content{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+	width: 100%;
+	border-collapse: collapse;
+	margin-top: 20px;
 }
 
-table, th, td {
-    border: 1px solid #444;
+table,
+th,
+td {
+	border: 1px solid #444;
 }
 
-th, td {
-    padding: 10px;
-    text-align: left;
-    color: #fff;
+th,
+td {
+	padding: 10px;
+	text-align: left;
+	color: #fff;
 }
 
 th {
-    background-color: #666;
+	background-color: #666;
 }
 
 tr:nth-child(even) {
-    background-color: #555;
+	background-color: #555;
 }
 
 tr:nth-child(odd) {
-    background-color: #444;
+	background-color: #444;
 }
 
 input[type="submit"] {
-    background-color: #000;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+	border: none;
+	cursor: pointer;
 }
 
 input[type="submit"]:hover {
-    background-color: #333;
+	background-color: #333;
 }
 
 p {
-    color: #fff;
+	color: #fff;
 }
 
 /* Additional styles for specific elements */
 #header {
-    background-color: #000;
-    color: #fff;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
+	background-color: #000;
+	color: #fff;
+	text-align: center;
+	padding: 10px;
+	width: 100%;
 }
 
 #checkout-btn {
-    background-color: #000;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
+	background-color: #000;
+	color: #fff;
+	padding: 10px;
+	border: none;
+	cursor: pointer;
 }
 
 #checkout-btn:hover {
-    background-color: #333;
+	background-color: #333;
 }
-
