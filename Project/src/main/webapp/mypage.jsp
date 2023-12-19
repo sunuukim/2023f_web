@@ -39,7 +39,7 @@ ResultSet userrs=userstmt.executeQuery();
 
 <nav class="exheader">마이 페이지</nav>
 
-<div class=lsection>
+<section class=lsection>
 <form method=post action="myinfo.jsp">
 	<input type=submit class="leftckbox" value="내 정보 확인">
 </form>
@@ -55,7 +55,7 @@ ResultSet userrs=userstmt.executeQuery();
 <form method=post action="withdraw.jsp">
 	<input type=submit class="leftckbox" value="회원 탈퇴">
 </form>
-</div>
+</section>
 
 <div class=section>
 	<form method=post action=cart.jsp>
@@ -98,6 +98,8 @@ ResultSet userrs=userstmt.executeQuery();
 				out.print("</td>");
 			out.print("</tr>");
 		out.print("</table><br>");	
+		}else{		
+			out.print("<br><br><br><br><br><br><br>");
 		}
 	}	
 	cartrs.close(); userrs.close();
