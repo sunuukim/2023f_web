@@ -20,7 +20,8 @@ String upw=request.getParameter("pw");
 LoginDao dao=new LoginDao();
 
 if(dao.exists(sid,upw)){
-	dao.delete(sid);
+	dao.deluser(sid);
+	dao.delcart(sid);
 	out.println("<script>alert('회원탈퇴 완료'); location.href='mainpage.html';</script>");
 	out.flush();
 }else {

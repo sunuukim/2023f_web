@@ -60,8 +60,10 @@ ResultSet userrs=userstmt.executeQuery();
 <div class=section>
 	<form method=post action=cart.jsp>
 	<%	
+	int cnt=0;
 	while(cartrs.next()){
-		if(sid.equals(cartrs.getString("uid"))&&(cartrs.getInt("delivery")==1)){
+		if(sid.equals(cartrs.getString("uid"))&&cartrs.getInt("delivery")==1){
+			cnt=1;
 			String sdate=cartrs.getString("sdate");
 			String ddate=cartrs.getString("ddate");
 			int delivery=cartrs.getInt("delivery");
@@ -98,10 +100,10 @@ ResultSet userrs=userstmt.executeQuery();
 				out.print("</td>");
 			out.print("</tr>");
 		out.print("</table><br>");	
-		}else{		
-			out.print("<br><br><br><br><br><br><br>");
 		}
-	}	
+	}
+	if(cnt==0) out.print("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>");
+	
 	cartrs.close(); userrs.close();
 	conn.close();
 	cartstmt.close(); userstmt.close();
