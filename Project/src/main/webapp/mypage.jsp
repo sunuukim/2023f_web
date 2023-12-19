@@ -25,16 +25,16 @@ if(sid==null){
 } %>
 
 <%
-String sname="";
-
 String usersql="select name,id from user";
 String cartsql="select * from cart";
 String itemsql="select * from item";
 
 PreparedStatement userstmt=conn.prepareStatement(usersql);
 PreparedStatement cartstmt=conn.prepareStatement(cartsql);
+PreparedStatement itemstmt=conn.prepareStatement(itemsql);
 ResultSet cartrs=cartstmt.executeQuery();
 ResultSet userrs=userstmt.executeQuery();
+ResultSet itemrs=itemstmt.executeQuery();
 %>
 
 <nav class="exheader">마이 페이지</nav>
@@ -69,7 +69,9 @@ ResultSet userrs=userstmt.executeQuery();
 			int delivery=cartrs.getInt("delivery");
 			String str=cartrs.getInt("price")+" 원 · "+cartrs.getInt("quantity")+" 개 ";
 			String simg=cartrs.getString("image");
-			String exp=cartrs.getString("explanation");
+			String sname=cartrs.getString("pname");
+			int sum=cartrs.getInt("price")*cartrs.getInt("quantity");
+			
 			
 			out.print("<table class=table>");
 			out.print("<tr>");
@@ -88,7 +90,7 @@ ResultSet userrs=userstmt.executeQuery();
 					<img src="./image/<%=simg %>" height=300 width=300>
 				<%out.print("</td>");
 				out.print("<td class=expfont>");
-					out.print(exp);
+					out.print(sname);
 				out.print("</td>");
 			out.print("</tr>");
 			out.print("<tr>");
@@ -96,7 +98,7 @@ ResultSet userrs=userstmt.executeQuery();
 					out.print(str);
 				out.print("</td>");
 				out.print("<td>");
-					out.print("<input type=submit value='장바구니 담기' class=cartbt>");
+					out.print("비용 "+sum);
 				out.print("</td>");
 			out.print("</tr>");
 		out.print("</table><br>");	
@@ -104,9 +106,9 @@ ResultSet userrs=userstmt.executeQuery();
 	}
 	if(cnt==0) out.print("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>");
 	
-	cartrs.close(); userrs.close();
+	cartrs.close(); userrs.close(); itemrs.close();
 	conn.close();
-	cartstmt.close(); userstmt.close();
+	cartstmt.close(); userstmt.close(); itemstmt.close();
 	%>
 	</form>
 </div>
