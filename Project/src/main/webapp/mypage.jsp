@@ -4,6 +4,10 @@
 <%@ page import="util.ConnectionPool" %>
 <%@ page import = "dao.ItemlistDao" %>
 <%@ include file="Mainmenu.jsp" %>
+<%@ page import="java.sql.PreparedStatement" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
 <%@ page session="true" %>
 <!DOCTYPE html>
 <html>
@@ -27,14 +31,11 @@ if(sid==null){
 <%
 String usersql="select name,id from user";
 String cartsql="select * from cart";
-String itemsql="select * from item";
 
 PreparedStatement userstmt=conn.prepareStatement(usersql);
 PreparedStatement cartstmt=conn.prepareStatement(cartsql);
-PreparedStatement itemstmt=conn.prepareStatement(itemsql);
 ResultSet cartrs=cartstmt.executeQuery();
 ResultSet userrs=userstmt.executeQuery();
-ResultSet itemrs=itemstmt.executeQuery();
 %>
 
 <nav class="exheader">마이 페이지</nav>
@@ -72,7 +73,6 @@ ResultSet itemrs=itemstmt.executeQuery();
 			String sname=cartrs.getString("pname");
 			int sum=cartrs.getInt("price")*cartrs.getInt("quantity");
 			
-			
 			out.print("<table class=table>");
 			out.print("<tr>");
 				out.print("<td>");
@@ -106,9 +106,9 @@ ResultSet itemrs=itemstmt.executeQuery();
 	}
 	if(cnt==0) out.print("<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>");
 	
-	cartrs.close(); userrs.close(); itemrs.close();
+	cartrs.close(); userrs.close();
 	conn.close();
-	cartstmt.close(); userstmt.close(); itemstmt.close();
+	cartstmt.close(); userstmt.close();
 	%>
 	</form>
 </div>
