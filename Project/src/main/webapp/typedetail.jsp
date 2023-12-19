@@ -34,7 +34,7 @@ case "스포츠레저":
 request.setCharacterEncoding("utf-8");
 
 ItemlistDao idao = new ItemlistDao();
-String str = idao.listing(t, 0);
+String str = idao.listing(t, 2);
 if(str!=""){
 	out.print(str);
 }else{
