@@ -41,7 +41,7 @@ if(str!=""){
 	out.print("판매 중인 상품이 없습니다.");
 }
 %>
-<br><br>
+<br><br><br><br><br><br><br>
 <footer>
 		<p>&Korea.uni.ShoppingMall</p>
 </footer>

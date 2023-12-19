@@ -45,7 +45,7 @@ if(str!=""){
 	out.print("등록된 상품이 없습니다.");
 }
 %>
-<br><br>
+<br><br><br><br><br>
 	<footer>
 		<p>&Korea.uni.ShoppingMall</p>
 	</footer>

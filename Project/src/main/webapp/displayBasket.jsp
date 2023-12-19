@@ -9,6 +9,14 @@
 <meta charset="UTF-8">
 <title>장바구니</title>
 <link rel="stylesheet" type="text/css" href="designbasket.css">
+<style>
+footer {
+	background-color: #333;
+	color: white;
+	padding: 1em;
+	text-align: center;
+}
+</style>
 <script>
 	function showLoginAlert() {
 		alert("로그인이 필요한 서비스입니다.");
@@ -105,9 +113,14 @@
 			<input type="submit" value="쇼핑하기">
 		</form>
 	</div>
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 	<%
 	}
 	}
 	%>
+	<br><br><br>
+	<footer>
+		<p>&Korea.uni.ShoppingMall</p>
+	</footer>	
 </body>
 </html>
