@@ -24,7 +24,7 @@
 	<table>
 		<tr>
 			<td>
-				<input type="password" class="chtext" name="pw" id="pw" placeholder="변경할 비밀번호" required>
+				<input type="password" class="chtext" name="pw" id="pw" placeholder="변경할 비밀번호 8자 이상" required>
 			</td>
 		</tr>
 		<tr>
