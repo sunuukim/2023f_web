@@ -54,7 +54,7 @@ while(rs.next()){
 	</tr>
 	<tr>
 		<td>
-			<input type="password" class=box-396 name="pw" placeholder="Password" required>
+			<input type="password" class=chtext name="pw" placeholder="Password" required>
 		</td>
 	</tr>
 		<tr>

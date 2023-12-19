@@ -45,7 +45,7 @@ while(rs.next()) {
 <table>
 	<tr>
 		<td class=right-side>
-			아이디 : 
+			아이디  
 		</td>
 		<td class=left-side>
 			<%out.print("  "+sid);%>
@@ -53,7 +53,7 @@ while(rs.next()) {
 	</tr>
 	<tr>
 		<td class=right-side>
-			이름 : 
+			이름  
 		</td>
 		<td class=left-side>
 			<%out.print(sna); %>
@@ -61,7 +61,7 @@ while(rs.next()) {
 	</tr>
 	<tr>
 		<td class=right-side>
-			배송지 : 
+			배송지  
 		</td>
 		<td class=left-side>
 			<%out.print(sdad); %>
@@ -69,7 +69,7 @@ while(rs.next()) {
 	</tr>
 	<tr>
 		<td class=right-side>
-			전화번호 : 
+			전화번호  
 		</td>
 		<td class=left-side>
 			<%out.print(stel); %>

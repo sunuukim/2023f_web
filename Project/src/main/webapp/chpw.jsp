@@ -24,12 +24,12 @@
 	<table>
 		<tr>
 			<td>
-				<input type="password" class="box-396" name="pw" id="pw" placeholder="변경할 비밀번호" required>
+				<input type="password" class="chtext" name="pw" id="pw" placeholder="변경할 비밀번호" required>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<input type="password" class="box-396" name="rpw" id="rpw" placeholder="비밀번호 확인" required>
+				<input type="password" class="chtext" name="rpw" id="rpw" placeholder="비밀번호 확인" required>
 			</td>
 		</tr>
 		<tr>
