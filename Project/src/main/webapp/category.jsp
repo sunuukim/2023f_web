@@ -24,7 +24,7 @@ case "스포츠레저":
 	break;
 default:
 	ifile = "Mainmenu.jsp";
-	all=2;
+	all=0;
 	break;
 }
 %>
