@@ -25,7 +25,7 @@ public class ChdaddressDao {
 			if(conn!=null) conn.close();
 		}
 	}
-	public boolean exists(String dad) 
+	public boolean exists(String daddress, String sid) 
 			throws NamingException, SQLException{
 		Connection conn=null;
 		PreparedStatement stmt=null;
@@ -35,7 +35,8 @@ public class ChdaddressDao {
 			conn=ConnectionPool.get();
 			stmt=conn.prepareStatement(sql);
 			
-			stmt.setString(1,dad);
+			stmt.setString(1,daddress);
+			stmt.setString(2,sid);
 			rs=stmt.executeQuery();
 			return rs.next();
 		}finally {
