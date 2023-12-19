@@ -23,6 +23,7 @@ if(dao.exists(sid,upw)){
 	dao.deluser(sid);
 	dao.delcart(sid);
 	out.println("<script>alert('회원탈퇴 완료'); location.href='mainpage.html';</script>");
+	session.removeAttribute("id");
 	out.flush();
 }else {
 	out.println("<script>alert('비밀번호가 동일하지 않습니다.'); location.href='withdraw.jsp';</script>");
