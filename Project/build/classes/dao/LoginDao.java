@@ -27,12 +27,30 @@ public class LoginDao {
 			if(conn!=null) conn.close();
 		}
 	}
-	public boolean delete(String uid) 
+	public boolean deluser(String uid) 
 			throws NamingException, SQLException{
 		Connection conn=null;
 		PreparedStatement stmt=null;
 		try {
 			String sql="delete from user where id = ?";
+			conn=ConnectionPool.get();
+			stmt=conn.prepareStatement(sql);
+			
+			stmt.setString(1, uid);
+			
+			int count=stmt.executeUpdate();
+			return (count>0)? true:false;
+		}finally {
+			if(stmt!=null) stmt.close();
+			if(conn!=null) conn.close();
+		}
+	}
+	public boolean delcart(String uid) 
+			throws NamingException, SQLException{
+		Connection conn=null;
+		PreparedStatement stmt=null;
+		try {
+			String sql="delete from cart where uid = ?";
 			conn=ConnectionPool.get();
 			stmt=conn.prepareStatement(sql);
 			
