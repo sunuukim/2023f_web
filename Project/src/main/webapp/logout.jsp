@@ -20,7 +20,7 @@ if(dao.exists(sid)){
 	out.println("<script>alert('로그아웃 되셨습니다.'); location.href='mainpage.html';</script>");
 	out.flush();
 }else{
-	out.println("<script>alert('로그인 되어 있는 사용자가 아닙니다.'); location.href='mainmenu.html';</script>");
+	out.println("<script>alert('로그인 되어 있는 사용자가 아닙니다.'); location.href='mainpage.html';</script>");
 	out.flush();
 }
 

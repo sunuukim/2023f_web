@@ -27,11 +27,9 @@ rs = stmt.executeQuery(sql);
 String sna="";
 String sdad="";
 String stel="";
-String sname="";
 
 while(rs.next()) {
 	if(sid.equals(rs.getString("id"))){
-		sname=rs.getString("name");
 		sna=rs.getString("name");
 		sdad=rs.getString("daddress");
 		stel=rs.getString("tel");
@@ -48,7 +46,7 @@ while(rs.next()) {
 			아이디  
 		</td>
 		<td class=left-side>
-			<%out.print("  "+sid);%>
+			<%out.print(sid);%>
 		</td>
 	</tr>
 	<tr>
