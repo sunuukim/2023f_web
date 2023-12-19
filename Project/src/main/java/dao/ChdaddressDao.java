@@ -25,20 +25,26 @@ public class ChdaddressDao {
 			if(conn!=null) conn.close();
 		}
 	}
-	public boolean exists(String dad) 
+	public boolean exists(String uid, String dad) 
 			throws NamingException, SQLException{
 		Connection conn=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
+		String oldaddr = null;
+		
 		try {
-			String sql="select * from user where daddress=?";
+			String sql="select daddress from user where id=?";
 			conn=ConnectionPool.get();
 			stmt=conn.prepareStatement(sql);
 			
-			stmt.setString(1,dad);
-			
+			stmt.setString(1,uid);
 			rs=stmt.executeQuery();
-			return rs.next();
+			
+			if(rs.next()) {
+				oldaddr = rs.getString("daddress");
+			}
+			
+			return (oldaddr.equals(dad));
 		}finally {
 			if(rs!=null) rs.close();
 			if(stmt!=null) stmt.close();
