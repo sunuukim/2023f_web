@@ -54,7 +54,13 @@ a {
 	color: black;
 	text-decoration-line: none;
 }
-
+td img{
+	border-radius: 5px;
+}
+td[class='img']{
+	border: 1px solid #ddd;
+	border-radius: 5px;
+}
 input[type='submit'],input[type="button"] {
 	margin: 5px;
 	background-color: lightgray;
