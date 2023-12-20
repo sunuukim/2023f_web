@@ -75,7 +75,7 @@ div {
 </head>
 <body>
 	<header>
-		<a href="mainpage.html">Shoppingmall</a> | 주문 / 결제하기
+		<a href="mainpage.jsp">Shoppingmall</a> | 주문 / 결제하기
 	</header>
 	<%
 	String sid = (String) session.getAttribute("id");

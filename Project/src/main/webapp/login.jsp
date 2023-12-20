@@ -21,7 +21,7 @@ LoginDao dao=new LoginDao();
 
 if(dao.exists(uid,upass)){
 	session.setAttribute("id",uid);
-	out.println("<script>alert('로그인 되었습니다. 즐거운 하루 보내십시오.'); location.href='mainpage.html';</script>");
+	out.println("<script>alert('로그인 되었습니다. 즐거운 하루 보내십시오.'); location.href='mainpage.jsp';</script>");
 	out.flush();
 	
 }else {

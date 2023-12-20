@@ -38,7 +38,7 @@ footer {
 		<div class="right-corner">
 			<%=uid%>님 환영합니다 | <a href="mypage.jsp">마이페이지</a> | <a href="logout.jsp">로그아웃</a>
 		</div>
-		<br><a href="mainpage.html"><h1>ShoppingMall</h1></a>
+		<br><a href="mainpage.jsp"><h1>ShoppingMall</h1></a>
 	</header>
 	<nav>장바구니</nav>
 	<%
@@ -88,7 +88,7 @@ footer {
 
 	<br>
 
-	<form action="mainpage.html" method="get">
+	<form action="mainpage.jsp" method="get">
 		<input type="submit" value="쇼핑 계속하기">
 	</form>
 
@@ -109,7 +109,7 @@ footer {
 	%>
 	<div>
 		<p style="color: black;">장바구니가 비어 있습니다.</p>
-		<form action="mainpage.html" method="get">
+		<form action="mainpage.jsp" method="get">
 			<input type="submit" value="쇼핑하기">
 		</form>
 	</div>

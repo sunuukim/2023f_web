@@ -17,13 +17,17 @@ LogoutDao dao=new LogoutDao();
 session.invalidate();
 
 if(dao.exists(sid)){
-	out.println("<script>alert('로그아웃 되셨습니다.'); location.href='mainpage.html';</script>");
+	out.println("<script>alert('로그아웃 되셨습니다.'); location.href='mainpage.jsp';</script>");
 	out.flush();
 }else{
-	out.println("<script>alert('로그인 되어 있는 사용자가 아닙니다.'); location.href='mainpage.html';</script>");
+	out.println("<script>alert('로그인 되어 있는 사용자가 아닙니다.'); location.href='mainpage.jsp';</script>");
 	out.flush();
 }
 
 %>
+<hr>
+<form method=post action="login.html">
+<input type=submit value="로그인 창으로">
+</form>
 </body>
 </html>
