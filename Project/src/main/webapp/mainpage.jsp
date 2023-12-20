@@ -145,27 +145,27 @@ footer {
 		<h2>생활용품</h2>
 		<div class="gallery">
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=생활용품&pid=60'">
 				<img src="image/flstm.png" alt="린스">
 				<p>린스</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
-				<img src="image/fhtus.png" alt="로션">
-				<p>로션</p>
+				onclick="location.href='iteminfo.jsp?c=생활용품&pid=61'">
+				<img src="image/fhtus.png" alt="바디로션">
+				<p>바디로션</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=생활용품&pid=15'">
 				<img src="image/papercup.jpg" alt="종이컵">
 				<p>종이컵</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=생활용품&pid=35'">
 				<img src="image/rhan.png" alt="고무장갑">
 				<p>고무장갑</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=생활용품&pid=33'">
 				<img src="image/frypan.jpg" alt="프라이팬">
 				<p>프라이팬</p>
 			</div>
@@ -176,27 +176,27 @@ footer {
 		<h2>패션의류</h2>
 		<div class="gallery">
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=패션의류&pid=66'">
 				<img src="image/long.png" alt="롱패딩">
 				<p>롱패딩</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
-				<img src="image/lskirt.png" alt="롱치마">
+				onclick="location.href='iteminfo.jsp?c=패션의류&pid=68'">
+				<img src="image/lskirt.png" alt="롱스커트">
 				<p>롱스커트</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=패션의류&pid=63'">
 				<img src="image/mtm.png" alt="맨투맨">
 				<p>맨투맨</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=패션의류&pid=36'">
 				<img src="image/hood.png" alt="후드티">
 				<p>후드티</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=패션의류&pid=54'">
 				<img src="image/short.png" alt="반바지">
 				<p>반바지</p>
 			</div>
@@ -207,27 +207,27 @@ footer {
 		<h2>스포츠레저</h2>
 		<div class="gallery">
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=스포츠레저&pid=43'">
 				<img src="image/yoga.png" alt="요가매트">
 				<p>요가매트</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
-				<img src="image/badmin.jpg" alt="배드민턴채">
-				<p>배드민턴채</p>
+				onclick="location.href='iteminfo.jsp?c=스포츠레저&pid=42'">
+				<img src="image/badmin.jpg" alt="배드민턴 라켓">
+				<p>배드민턴 라켓</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=스포츠레저&pid=44'">
 				<img src="image/bike.jpg" alt="자전거">
 				<p>자전거</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=스포츠레저&pid=18'">
 				<img src="image/golfb.jpg" alt="골프공">
 				<p>골프공</p>
 			</div>
 			<div class="gallery-item"
-				onclick="location.href='iteminfo.jsp?c=식품&pid=8'">
+				onclick="location.href='iteminfo.jsp?c=스포츠레저&pid=19'">
 				<img src="image/tent.jpg" alt="텐트">
 				<p>텐트</p>
 			</div>
