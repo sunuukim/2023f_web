@@ -36,7 +36,7 @@ public class ItemlistDao {
 			int count = 0;
 			while(rs.next()){
 				str += "<td><a href='iteminfo.jsp?c="+ rs.getString("category") + "&pid=" + rs.getString("pid") + "'>" + rs.getString("name") + "</a><br>" + rs.getString("price") + "원</td>";
-				img += "<td width=200 height=200><a href='iteminfo.jsp?c="+ rs.getString("category") + "&pid=" + rs.getString("pid") +"'><img width=200 src='image/"+ rs.getString("image")+ "'></a></td>";
+				img += "<td class='img' width=200 height=200><a href='iteminfo.jsp?c="+ rs.getString("category") + "&pid=" + rs.getString("pid") +"'><img width=200 src='image/"+ rs.getString("image")+ "'></a></td>";
 				count++;
 				if(count!=0 && count%5==0) {
 					result += img+"</tr>"+str+"</tr>";
